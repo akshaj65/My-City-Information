@@ -12,6 +12,7 @@ const errorMiddleware= (err, req, res, next) => {
 
     //mongoose duplicate key error
     if(err.code===11000){
+        console.log(err);
         const message=`Duplicate ${Object.keys(err.keyValue)} Entered`;
         err= new ErrorHandler(message,400);
     }
