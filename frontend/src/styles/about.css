@@ -1,0 +1,132 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+   /* team.css */
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding:19px;
+  }
+  
+  .about-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .col-md-3,
+  .col-sm-6 {
+    flex: 0 0 calc(25% - 30px);
+    margin: 15px;
+  }
+  
+  .our-team {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 9px gray;
+  }
+  
+  .about-pic img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .about-title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+ 
+  .about-social {
+    margin-top: 15px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-social li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+  
+  .about-social li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    color: #fff;
+    border-radius: 50%;
+  }
+  
+      
+  .our-team{
+    padding: 20px 15px 30px;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+}
+.our-team .about-pic{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 25px;
+    transition: all 0.5s ease 0s;
+}
+.our-team:hover .about-pic{
+    background: #0B2447;
+    border-radius: 50%;
+}
+.about-pic img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.our-team .about-title{
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2e282a;
+    text-transform: uppercase;
+    margin: 0 0 7px 0;
+}
+.our-team .about-post{
+    display: block;
+    font-size: 15px;
+    color: #0B2447;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.our-team .about-social{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.our-team .about-social li{
+    display: inline-block;
+    margin-right: 5px;
+}
+.our-team .about-social li a{
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 15px;
+    color: #0B2447;
+    border: 1px solid #0B2447;
+    transition: all 0.5s ease 0s;
+}
+.our-team:hover .about-social li a{
+    background: #0B2447;
+    color: #fff;
+}
+@media only screen and (max-width: 990px){
+    .our-team{ margin-bottom: 30px; }
+}

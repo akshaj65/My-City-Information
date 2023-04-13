@@ -1,0 +1,129 @@
+
+.btn1,.btn2{
+  color: #0B2447;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.form {
+  width: 350px;
+  height: 515px;
+  background-color: rgb(255, 255, 250);
+  box-shadow: 0px 1px 9px black;
+}
+.btn button {
+  padding: 3px;
+  margin: 30px 0px 40px 30px;
+  border-style: none;
+  background-color: transparent;
+  color: beige;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.formGroup input {
+  border: none;
+  width: 80%;
+  border-bottom: 2px solid #918989;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: transparent;
+  color: #0b2447;;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid rgb(91, 243, 131);
+  font-size: 17px;
+  font-weight: bold;
+  color: #0b2447;
+}
+
+::placeholder {
+  color:#464646;
+}
+
+.checkBox {
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+}
+
+#checkBox {
+  margin-right: 10px;
+  height: 21px;
+  width: 15px;
+}
+
+.text {
+  color: rgb(100, 100, 100);
+  font-size: 13px;
+}
+
+.btn2 {
+  padding: 10px;
+  width: 150px;
+  border-radius: 20px;
+  background-color: rgb(10, 136, 43);
+  border-style: none;
+  color: white;
+  font-weight: 600;
+}
+
+.btn2:hover {
+  background-color: rgba(10, 136, 43, 0.5);
+}
+
+.btn button:hover,
+button.btnActive {
+  border-bottom: 2px solid rgb(91, 243, 131);
+}
+.none {
+  display: none;
+}
+.login {
+  margin-top: 70px;
+}
+.signup{
+  margin-top: 30px;
+}
+.login .checkBox {
+  margin-top: 30px;
+}
+.signup .checkBox {
+  margin-top: 30px;
+}
+/* Media Queries for responsiveness */
+
+@media screen and (max-width: 768px) {
+  .form {
+    width: 80%;
+  }
+
+  .btn {
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    justify-content: flex-start;
+    padding: 0 10px;
+  }
+
+  .form {
+    width: 100%;
+  }
+}

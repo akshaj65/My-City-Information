@@ -1,0 +1,54 @@
+.container-input {
+  display: flex;
+    position: relative;
+    margin-left: 350px;
+  }
+  
+  .SearchInput {
+    width: 200px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+  }
+  
+  .container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+  }
+  
+  .SearchInput:focus {
+    opacity: 1;
+    width: 350px;
+    outline: none;
+    border-bottom: 2px solid rgb(11, 36, 71);
+    font-size: 17px;
+    font-weight: bold;
+    color: #6d6c78;
+  }
+
+  .flexSearchContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 101px;
+    gap: 17px;
+  }
+
+  .gps{
+    margin-left: 355px;
+  }
+
+  .location{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .textField{
+    font-size: 14px;
+    color: #6d6c78;
+  }

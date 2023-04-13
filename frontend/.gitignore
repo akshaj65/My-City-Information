@@ -11,6 +11,9 @@
 # production
 /build
 
+# city page test
+test
+
 # misc
 .DS_Store
 .env.local

@@ -1,0 +1,179 @@
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+.main-nav {
+    width: 100%;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 999;
+}
+
+.logo {
+    display: grid;
+    /* background-color: #3b5998; */
+    grid-column: 2/3;
+    justify-content:start;
+    align-items: center;
+}
+.menu-link {
+    grid-column: 3/4;
+}
+  
+.menu-link ul {
+    height: 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* color: white; */
+  }
+
+ 
+ .hamburger-menu{
+    /* padding: 28px; */
+    display: none;
+ }
+
+
+
+  .menu-link ul li {
+    /* font-size: 1rem; */
+    font-size: 1.1rem;
+    width: 80px; /* added to give space for border radius where other elements wont effect during `active`  */
+  }
+  
+  .menu-link ul li a {
+    text-transform: capitalize;
+    /* color: #a29df4; */
+    font-weight: 200;
+    color: #6d6c78;
+    transition: 0.6s ease-in-out;
+  }
+  .menu-link ul li:hover > a {
+    transform-origin:left;  
+    /* text-decoration: underline; */
+    transition: 0.5s ease-in-out;
+    font-weight: bold;
+  }
+  .menu-link ul li a.active{
+    /* background-color: black;
+    color: aliceblue; */
+    font-weight: bold;
+    /* padding: 6px 16px;
+    border-radius: 9px; */
+  }
+
+  .fade-in{
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+    animation: updown 200ms ease-in  1  ; 
+  }
+  
+  @keyframes updown {
+      0%{
+        transform: translateY(-13px);
+      }
+      60%{
+        transform: translateY(-5px);
+      }
+      99%{
+        transform: translateY(0px);
+      }
+  
+  }
+  @keyframes downup {
+    from {height: 200px;
+    }
+  to {height: 0;}
+  }
+  /* responsive css style  */
+@media (max-width: 1080px) {
+    .main-nav {
+      height: 70px;
+      grid-template-columns: 2rem 3fr 3fr 1fr 2rem;
+    }
+  
+    .logo,
+    .menu-link ul{
+      height: 70px;
+    }
+  }
+  
+  /* responsive css style  */
+  @media (max-width: 867px) {   /* same as home.css */
+    .main-nav {
+      height: 60px;
+      /* grid-template-columns: 2rem 2fr 3fr 2rem 2rem; */
+      grid-template-columns: 0.7rem 7fr 3fr 2rem 1rem;
+    }
+    .logo h2{
+        font-size: larger;
+    }
+    .menu-link {
+      display: none;
+     
+    }
+    .mobile-menu-link {
+        position: relative;
+        z-index: 99;
+      }
+    
+      .mobile-menu-link {
+        background-color: white;
+        height: 200px;
+        display: grid;
+        grid-column: 2/5;
+        align-items: center;
+        padding-left: 3rem;
+        /* transition: all 2s linear;
+        transform-origin: top; */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      }
+      .mobile-menu-link ul {
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .mobile-menu-link ul li:first-child {
+        transition-delay: 0.2s;
+      }
+      .hamburger-menu {
+        display: flex;
+        justify-self: end;
+        align-items: center;
+        font-size: 1.5rem;
+        grid-row: 1/2;
+        grid-column: 4/5;
+      }
+      .hamburger-menu a{
+        color: #0a346e;
+      }
+      /* .fade-out{ */
+        /* background-color: white;
+        height: 20rem;
+        display: grid;
+        grid-column: 2/5;
+        align-items: center;
+        padding-left: 3rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 350ms ease-out;
+        animation: downup 200ms ease-out  1  ;  */ 
+        /* overflow: hidden;
+        animation: downup 200ms ease; */
+       /* } */
+}
+

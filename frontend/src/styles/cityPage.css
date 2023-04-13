@@ -1,0 +1,6 @@
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  /* gap: 80px; */
+}
