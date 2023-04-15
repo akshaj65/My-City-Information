@@ -3,12 +3,17 @@ import { NavLink } from 'react-router-dom';
 import '../styles/nav.css'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Profile from './Profile';
 const NavBar = () => {
+    const { isAuthenticated } = useSelector(
+        (state) => state.user
+    );
     const [showMenuLinks, setShowMenuLinks] = useState(false);
     return (
         <>
             <nav className="main-nav">
-                <div className="logo"><h2>MyCityInfo</h2></div>
+                <div className="logo"><h2>CityScape</h2></div>
                 <div className={
                     showMenuLinks ? "menu-link mobile-menu-link fade-in" : "menu-link"
                 }>
@@ -24,18 +29,24 @@ const NavBar = () => {
                         </li>
                         <li>
                             {/* make it login or profile */}
-                            <NavLink to="/login">Login</NavLink>
+                            {
+                                !isAuthenticated
+                                    ?
+                                    <NavLink to="/login">Login</NavLink>
+                                    :
+                                    <Profile isMobileView={showMenuLinks}/>
+                            }
                         </li>
                     </ul>
                 </div>
                 <div className="hamburger-menu">
-                    <a href="#" onClick={() => setTimeout(() => {
+                    <button  onClick={() => setTimeout(() => {
                         setShowMenuLinks(!showMenuLinks)
                     }, 200)} >
-                    <GiHamburgerMenu />
-                </a>
-            </div>
-        </nav>
+                        <GiHamburgerMenu />
+                    </button>
+                </div>
+            </nav>
         </>
     )
 }

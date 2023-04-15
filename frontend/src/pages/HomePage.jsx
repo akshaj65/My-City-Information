@@ -1,12 +1,15 @@
 import React from 'react'
 import '../styles/home.css'
 import NavBar from '../components/NavBar';
+import MetaData from './MetaData';
 function HomePage() {
   return (
     <div>
+      {/*adds title */}
+      <MetaData title="CityScape"/>   
       <NavBar/>
       <div className="heading">
-        <h1>Welcome to MyCityInfo</h1>
+        <h1>Welcome to CityScape</h1>
         <figcaption>"Your Ultimate Guide to Exploring the Vibrant Cities of India!"</figcaption>
       </div>
 
@@ -31,7 +34,7 @@ function HomePage() {
           <img src="https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2019/07/tincha-fall-indore.jpg" alt="" />
           <div className="content">
             <h3>Plan your itinerary</h3>
-            <p>With MyCityInfo, you can easily plan your day with suggested routes and directions. Never waste another moment deciding what to do.</p>
+            <p>With CityScape, you can easily plan your day with suggested routes and directions. Never waste another moment deciding what to do.</p>
           </div>
         </div>
 
@@ -44,7 +47,7 @@ function HomePage() {
         </div>
 
         <div className="testimonial">
-          <p>"As a new resident, MyCityInfo has been a lifesaver in helping me get acclimated to my new city."</p>
+          <p>"As a new resident, CityScape has been a lifesaver in helping me get acclimated to my new city."</p>
           <div className="profile">
             <img src="./images/pfp-1.jpg" alt="" />
             <p>test user</p>
@@ -54,7 +57,7 @@ function HomePage() {
       </main>
 
       <div className="footer">
-        <h2>Download MyCityInfo today and discover your city like a local.</h2>
+        <h2>Download CityScape today and discover your city like a local.</h2>
       </div>
     </div>
   )

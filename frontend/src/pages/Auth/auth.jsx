@@ -1,31 +1,59 @@
-import React from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import NavBar from '../../components/NavBar'
 import Login from './Login'
 import Signup from './Signup'
+import Loader from '../../components/Loader'
+// import Swal from 'sweetalert2'
+import { clearErrors } from '../../actions/userAction'
 const Auth = () => {
+
+  const dispatch = useDispatch();
+
+    const { loading, error,isAuthenticated} = useSelector(
+        (state) => state.user
+    );
     const [isSignUp, setIsSignUp] = useState(false);
     const handleSignUpClick = () => {
         setIsSignUp(true);
-      };
-    
-      const handleLoginClick = () => {
+    };
+
+    const handleLoginClick = () => {
         setIsSignUp(false);
-      };
+    };
+
+    useEffect(()=>{
+        // if(isAuthenticated){
+        //  
+        // }
+        if(error){
+    
+          dispatch(clearErrors());
+        }
+      },[dispatch,error])
+    
+
     return (
-        <>
-            <NavBar />
-            <div className="container">
-                <div className="form">
-                    <div className="btn">
-                        <button className={isSignUp?"SignupBtn btnActive":"SignupBtn"} onClick={handleSignUpClick}>Signup</button>
-                        <button className={!isSignUp?"btnActive LoginBtn":"LoginBtn"}onClick={handleLoginClick}>Login</button>
+        <Fragment>
+            {loading ? (
+                <Loader/>
+            ) : (
+                <Fragment>
+                    <NavBar />
+                    <div className="container">
+                        <div className="form">
+                            <div className="btn">
+                                <button className={isSignUp ? "SignupBtn btnActive" : "SignupBtn"} onClick={handleSignUpClick}>Signup</button>
+                                <button className={!isSignUp ? "btnActive LoginBtn" : "LoginBtn"} onClick={handleLoginClick}>Login</button>
+                            </div>
+                            <Login isActive={!isSignUp} isLogin={isAuthenticated}/>
+                            <Signup isActive={isSignUp} isRegistered={isAuthenticated}/>
+                        </div>
                     </div>
-                    <Login isActive={!isSignUp}/>
-                    <Signup  isActive={isSignUp}/>
-                </div>
-            </div>
-        </>
+                </Fragment>
+            )}
+        </Fragment>
     )
 }
 

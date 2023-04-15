@@ -10,8 +10,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json({extended:true}));
-app.use(bodyParser.urlencoded({extended:true}));
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cookieParser());//we have used this for parsing cookies
 
 app.use("/api/v1",userRouter);
