@@ -31,7 +31,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 58px;
-    gap: 17px;
+    /* gap: 17px; */
+    height: 187px;
   }
   
 .container-input svg {
@@ -47,6 +48,45 @@
   left: 10px;
 }
 
+.suggestions-list {
+  list-style: none;
+  /* margin: 0; */
+  width: 512px;
+  position: relative;
+  top: 0;
+  z-index: 3;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.suggestions-list li {
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f2f2f2;
+}
+
+.animatedUl {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 @media (max-width: 1080px) {
   .SearchInput {

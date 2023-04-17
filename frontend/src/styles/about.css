@@ -3,7 +3,7 @@
    /* team.css */
 
 .about-container {
-    max-width: 1200px;
+    max-width: 1345px;
     margin: 0 auto;
     padding:19px;
   }
@@ -11,12 +11,13 @@
   .about-row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   .col-md-3,
   .col-sm-6 {
-    flex: 0 0 calc(25% - 30px);
-    margin: 15px;
+    /* flex: 0 0 calc(25% - 30px); */
+    margin: 14px;
   }
   
   .our-team {
@@ -65,18 +66,18 @@
   
       
   .our-team{
-    padding: 20px 15px 30px;
+    /* padding: 20px 15px 30px; */
     background: #fff;
     border-radius: 15px;
     text-align: center;
 }
 .our-team .about-pic{
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 223px;
+    height: 222px;
     background: #fff;
     padding: 10px;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     transition: all 0.5s ease 0s;
 }
 .our-team:hover .about-pic{
@@ -84,8 +85,8 @@
     border-radius: 50%;
 }
 .about-pic img{
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
 .our-team .about-title{

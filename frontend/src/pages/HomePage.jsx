@@ -2,9 +2,10 @@ import React from 'react'
 import '../styles/home.css'
 import NavBar from '../components/NavBar';
 import MetaData from './MetaData';
+import userImg from '../Images/jyoti.jpg'
 function HomePage() {
   return (
-    <div>
+    <div className='home'>
       {/*adds title */}
       <MetaData title="CityScape"/>   
       <NavBar/>
@@ -49,7 +50,7 @@ function HomePage() {
         <div className="testimonial">
           <p>"As a new resident, CityScape has been a lifesaver in helping me get acclimated to my new city."</p>
           <div className="profile">
-            <img src="./images/pfp-1.jpg" alt="" />
+            <img src={userImg} alt="" />
             <p>test user</p>
           </div>
         </div>

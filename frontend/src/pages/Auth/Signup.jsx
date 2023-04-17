@@ -107,7 +107,7 @@ function Signup({ isActive, isRegistered }) {
         <span className="text">I agree with terms & conditions</span>
       </div>
       <div className="formGroup">
-        <button type="button" className="btn2" onClick={handleRegister}>Register</button>
+        <button type="button" className="btn2" onClick={handleRegister} disabled={(email&&password)?false:true}>Register</button>
       </div>
     </form>
 

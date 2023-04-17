@@ -11,7 +11,7 @@ const MyAlert = (title, showConfirmButton, icon) => {
     }else{
         const Toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: 'bottom-end',
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
@@ -23,7 +23,7 @@ const MyAlert = (title, showConfirmButton, icon) => {
           Toast.fire({
             icon: icon,
             customClass: {
-              container: 'swal-custom-container'  //css file in home.css
+              container: 'swal-custom-container'  //css file in nav.css
             },
             title: title
           })

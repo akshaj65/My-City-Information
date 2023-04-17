@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../actions/userAction';
 import logo from '../Images/userlogo.png'
 import '../styles/profile.css'; // Import the CSS file
 
 const Profile = ({ isMobileView }) => {
+    const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleProfileClick = () => {
@@ -10,7 +13,7 @@ const Profile = ({ isMobileView }) => {
     };
 
     const handleSignOut = () => {
-
+        dispatch(logout());
         console.log('Sign out clicked');
     };
     return (

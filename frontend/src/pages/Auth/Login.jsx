@@ -20,7 +20,6 @@ const Login = ({ isActive, isLogin }) => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(password);
     dispatch(login(email, password));
     
     console.log('Login clicked');
@@ -58,7 +57,7 @@ const Login = ({ isActive, isLogin }) => {
         <span className="text">Keep me signed in on this device</span>
       </div>
       <div className="formGroup">
-        <button type="button" className="btn2" onClick={handleLogin}>Log In</button>
+        <button type="button" className="btn2" onClick={handleLogin} disabled={(email&&password)?false:true}>Log In</button>
       </div>
     </form>
   );

@@ -16,6 +16,7 @@ li {
     top: 0;
     background-color: white;
     z-index: 999;
+    text-align: end;
 }
 
 .logo {
@@ -143,6 +144,7 @@ li {
         transform-origin: top; */
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
           rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+          text-align: center;
       }
       .mobile-menu-link ul {
         height: 100%;
@@ -195,7 +197,7 @@ li {
         animation: downup 200ms ease; */
        /* } */
        .swal-custom-container {
-        margin-top: 70px;
+        margin-top: 10px;
       }
 }
 

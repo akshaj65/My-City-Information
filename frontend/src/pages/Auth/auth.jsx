@@ -7,11 +7,12 @@ import Signup from './Signup'
 import Loader from '../../components/Loader'
 // import Swal from 'sweetalert2'
 import { clearErrors } from '../../actions/userAction'
+import { useNavigate } from 'react-router-dom'
 const Auth = () => {
 
-  const dispatch = useDispatch();
-
-    const { loading, error,isAuthenticated} = useSelector(
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { loading, error, isAuthenticated } = useSelector(
         (state) => state.user
     );
     const [isSignUp, setIsSignUp] = useState(false);
@@ -23,21 +24,21 @@ const Auth = () => {
         setIsSignUp(false);
     };
 
-    useEffect(()=>{
-        // if(isAuthenticated){
-        //  
-        // }
-        if(error){
-    
-          dispatch(clearErrors());
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/city');
         }
-      },[dispatch,error])
-    
+        if (error) {
+
+            dispatch(clearErrors());
+        }
+    }, [dispatch, error,isAuthenticated,navigate])
+
 
     return (
         <Fragment>
             {loading ? (
-                <Loader/>
+                <Loader />
             ) : (
                 <Fragment>
                     <NavBar />
@@ -47,8 +48,8 @@ const Auth = () => {
                                 <button className={isSignUp ? "SignupBtn btnActive" : "SignupBtn"} onClick={handleSignUpClick}>Signup</button>
                                 <button className={!isSignUp ? "btnActive LoginBtn" : "LoginBtn"} onClick={handleLoginClick}>Login</button>
                             </div>
-                            <Login isActive={!isSignUp} isLogin={isAuthenticated}/>
-                            <Signup isActive={isSignUp} isRegistered={isAuthenticated}/>
+                            <Login isActive={!isSignUp} isLogin={isAuthenticated} />
+                            <Signup isActive={isSignUp} isRegistered={isAuthenticated} />
                         </div>
                     </div>
                 </Fragment>

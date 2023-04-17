@@ -139,7 +139,7 @@ figcaption, p{
 
 @media screen and (min-width: 867px) {
     
-    body{
+    .home{
         text-align: center;
     }
 
