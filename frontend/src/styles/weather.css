@@ -1,0 +1,61 @@
+/* Style the weather container */
+.weather-container {
+    background-color: #fff;;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    padding: 20px;
+    width: 289px;
+    color: #003c70;
+    display: flex;
+flex-direction: row-reverse;
+justify-content: space-between;
+  }
+  
+  /* Style the weather icon */
+  .weather-icon {
+    margin-right: -4px;
+    margin-top: -11px;
+    height: 68px;
+  }
+  .weather-icon img {
+    display: block;
+    width: 69px;
+    height: 75px;
+  }
+  
+  /* Style the weather info */
+  .weather-info {
+    width: calc(100% - 100px);
+    height: 93px;
+    /* padding: 13px; */
+    padding: 0 13px;
+  }
+  
+  /* Style the temperature */
+  .temperature {
+    font-size: 27px;
+    font-weight: bold;
+    width: 181px;
+  }
+  .temperature>span:first-of-type{
+    margin-right: 12px;
+    font-size: 32px;
+  }
+  
+  /* Style the additional info */
+  .additional-info {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 13px;
+    width: 223px;
+  
+  }
+  
+  /* Style the humidity and wind speed */
+  .additional-info span {
+    font-size: 0.9em;
+    margin-right: 11px;
+    /* margin-right: 45px; */
+  }
+  

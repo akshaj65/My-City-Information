@@ -79,6 +79,7 @@ figcaption, p{
 
 .section img{
     width: 100%;
+    height: 100%;  /*newly added*/
     border-radius: 5px;
 }
 

@@ -58,6 +58,9 @@
 
 
 @media (max-width: 600px) {
+    .flexContainer>div:nth-child(3){
+        margin-top: 10px;
+      }
     .carouselHeader{
         font-size: 27px;
         padding-left: 15px;

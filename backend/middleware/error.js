@@ -13,7 +13,11 @@ const errorMiddleware= (err, req, res, next) => {
     //mongoose duplicate key error
     if(err.code===11000){
         console.log(err);
-        const message=`Duplicate ${Object.keys(err.keyValue)} Entered`;
+        let message=`Duplicate ${Object.keys(err.keyValue)} Entered`;
+        // console.log(Object.keys(err.keyValue)[0] );
+        if(Object.keys(err.keyValue)[0] === 'email'){
+            message='Email Already Exists';
+        }
         err= new ErrorHandler(message,400);
     }
 

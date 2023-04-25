@@ -67,7 +67,6 @@ const Search = () => {
 }
 
 const SearchIcon = ({ navigate, searchQuery }) => {
-    console.log(navigate);
 
     return (
         <div onClick={() => navigate(`/city/${searchQuery}`)}>

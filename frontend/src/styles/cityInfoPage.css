@@ -1,0 +1,132 @@
+
+.cityInfo-header{
+    max-width: 1110px;
+    background-color: burlywood;
+    margin: 0 auto;
+    height: 200px;
+}
+
+.cityInfo-container {
+    display: flex;
+flex-direction: column;
+height: 100vh;
+margin: 0 auto;
+max-width: 1110px;
+  }
+  
+  .cityInfo-top-section {
+    display: flex;
+    flex-direction: row;
+
+
+  }
+  
+  .cityInfo-first-box {
+    /* background-color: #938282; */
+    width: 100%;
+    margin: auto;
+
+  }
+  
+  .cityInfo-second-box {
+    display: flex;
+    flex-direction: column;
+    height: 617px;
+    width: 100%;
+    /* background-color: blueviolet; */
+  }
+  
+  .cityImages {
+    /* background-color: #d0d0d0; */
+height: 64%;
+margin: 37px auto;
+width: 500px;
+  }
+  
+  .cityWeather {
+    /* background-color: #b0b0b0; */
+/* width: 273px;
+height: 200px;
+margin: 0 auto; */
+/* max-width: 400px; */
+margin-bottom: 24px;
+  }
+  
+  .cityInfo-bottom-section {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+  }
+  
+  .cityInfo-list-box {
+    height: 500px;
+    width: 50%;
+  }
+  
+  .cityInfo-map-box {
+    height: 500px;
+    width: 50%;
+    padding: 0 19px;
+  }
+  
+
+  /* filters */
+.cityInfo-filterBox {
+  /* padding: 12px 0; */
+    width: 236px;
+    height: 40px;
+    margin: 8px;
+    margin-bottom: 24px;
+
+}
+.cityInfo-filterBox label{
+  margin-right: 14px;
+}
+.cityInfo-filterBox select{
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: .5em 1.5em .5em .5em;
+    position: relative;
+    width: 158px;
+    border: 2px solid #003c70;
+    appearance: none;
+  }
+  .cityInfo-filterBox::after {
+    content: '▼';
+    position: relative;
+    bottom: 33px;
+    left: 175px;
+    padding: 0 1em;
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.25s all ease;
+    font-size: 14px;
+    color: #848484;
+  }
+.cityInfo-first-box select:hover {
+    background-color: #f1f1f1;
+  }
+.cityInfo-filterBox:hover::after {
+    color: #003c70d6;
+  }
+
+select::-ms-expand {
+  display: none;
+}
+
+
+select:focus {
+  outline: none;
+}
+
+select option {
+  font-weight: normal;
+}
+
+select optgroup {
+  font-weight: bold;
+}

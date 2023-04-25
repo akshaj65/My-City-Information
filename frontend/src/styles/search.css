@@ -92,11 +92,18 @@
   .SearchInput {
     width: 416px;
   }
+  .suggestions-list{
+    width: 360px;
+  }
 }
 
 @media (max-width: 867px) { 
   .SearchInput {
     width: 312px;
     height: 41px;
+  }
+  .suggestions-list{
+    width: 263px;
+
   }
 }

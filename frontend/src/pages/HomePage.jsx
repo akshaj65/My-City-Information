@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/home.css'
 import NavBar from '../components/NavBar';
 import MetaData from './MetaData';
-import userImg from '../Images/jyoti.jpg'
+import userImg from '../Images/teja.jpeg'
 function HomePage() {
   return (
     <div className='home'>
@@ -51,7 +51,7 @@ function HomePage() {
           <p>"As a new resident, CityScape has been a lifesaver in helping me get acclimated to my new city."</p>
           <div className="profile">
             <img src={userImg} alt="" />
-            <p>test user</p>
+            <p>Teja Kiran</p>
           </div>
         </div>
 

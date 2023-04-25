@@ -29,7 +29,7 @@
   width: 1061px;
 }
 .cityHeader-h1{
-  font-size: 36px;
+  font-size: 32px;
   margin: 0px;
   color: #294e70;
   width: 300px;
@@ -90,12 +90,13 @@
     background-clip: text;
   }
   .cityHeader-h1{
-    font-size: 17px;
+    font-size: 16px;
     width: 159px;
+    padding: 5px 12px;
   }
   .cityHeader-caption{
-    margin: 0px 8px 0px;
-    height: 32px;
+    margin: -3px 8px 0px;
+    height: 34px;
     background-size: 155px 41px;
   }
 }
