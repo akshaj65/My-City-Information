@@ -1,0 +1,1 @@
+export const SET_PLACE_TYPE = 'SET_PLACE_TYPE';

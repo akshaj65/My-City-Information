@@ -52,11 +52,13 @@ const PoliceStation = mongoose.model('PoliceStations', basicSchema);
 const Hotel = mongoose.model('Hotel', basicSchema);
 const School = mongoose.model('School', basicSchema);
 const College = mongoose.model('College', basicSchema);
+const OldAgeHome = mongoose.model('OldAgeHome', basicSchema);
 
 export {
     Hospital,
     PoliceStation,
     Hotel,
     School,
-    College
+    College,
+    OldAgeHome
 };

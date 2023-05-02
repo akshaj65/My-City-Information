@@ -1,18 +1,61 @@
-
+/* header */
 .cityInfo-header{
     max-width: 1110px;
-    background-color: burlywood;
     margin: 0 auto;
-    height: 200px;
+    padding-top: 44px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cityInfo-header-leftSide{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cityInfo-header-rightSide{
+  display: flex;
+  align-items: center;
+  height: 100px;
+  margin-right: 38px;
+}
+.cityInfo-header-rightSide .flexSearchContainer{
+  height: 90px;
+}
+.cityInfo-header-rightSide input{
+  height: unset;
+  width: unset;
+}
+.cityInfo-header-rightSide  .suggestions-list{
+  width: 200px;
+}
+.cityInfo-header-city{
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.cityInfo-header-city > a{
+  color: #454545c7;
+}
+.cityInfo-header-city>a:hover{
+  color: #0B2447;
+}
+.cityInfo-header-city-name{
+  font-size: 36px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  letter-spacing: 3px;
+  margin-left: 15px;
 }
 
 .cityInfo-container {
     display: flex;
-flex-direction: column;
-height: 100vh;
-margin: 0 auto;
-max-width: 1110px;
-  }
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 1110px;
+}
   
   .cityInfo-top-section {
     display: flex;

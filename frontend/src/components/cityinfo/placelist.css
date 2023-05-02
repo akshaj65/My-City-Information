@@ -44,16 +44,22 @@
 
 .placeName {
   margin: 0 0 10px;
-  font-size: 1.2rem;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .placeDescription {
-  margin: 0;
-  font-size: 1rem;
+  margin-bottom: 5px;
+  font-size: 14px;
   color: #666;
 }
-
+.placeInfo span{
+  color: #666;
+  font-weight: bold;
+}
+.placeAddress{
+  font-size: 15px;
+}
 
 .placeImages {
   display: flex;
@@ -96,7 +102,7 @@
   scrollbar-width: none; /* to hide the scrollbar */
   padding: 10px;
   /* margin-top: 18px; */
-  background-color: #a0a0a054;
+  background-color: #a0a0a01f;
 }
 
 /* .slick-slider {

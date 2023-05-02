@@ -1,4 +1,5 @@
 import React from 'react'
+import Events from '../components/cityinfo/Events';
 import NavBar from '../components/NavBar';
 import Team from '../components/TeamMember';
 
@@ -8,6 +9,7 @@ function AboutPage() {
       <NavBar/>
       <h2>Our Team</h2>
       <Team/>  
+      <Events place={"kochi"}/>
     </div>
   )
 }

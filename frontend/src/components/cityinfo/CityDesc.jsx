@@ -54,8 +54,8 @@ const PlaceLink = styled.a`
 const CityDesc = () => {
   return (
     <PlaceBox>
-      <PlaceTitle>Bengaluru</PlaceTitle>
-      <PlaceDescription>Bengaluru, also known as Bangalore, is the capital of the Indian state of Karnataka. It is known as the "Silicon Valley of India" due to its prominent role in the country's information technology industry. It is also famous for its street food and shopping destinations. With a population of over 10 million people, Bengaluru is a cosmopolitan city that blends modernity with traditional Indian culture.</PlaceDescription>
+      <PlaceTitle></PlaceTitle>
+      <PlaceDescription>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Bengaluru</strong>, also known as Bangalore, is the capital of the Indian state of Karnataka. It is known as the "Silicon Valley of India" due to its prominent role in the country's information technology industry. It is also famous for its street food and shopping destinations. With a population of over 10 million people, Bengaluru is a cosmopolitan city that blends modernity with traditional Indian culture.</PlaceDescription>
       <PlaceInfo>
         <PlaceInfoItem><strong>Main Language:</strong> Kannada</PlaceInfoItem>
         <PlaceInfoItem><strong>Population:</strong> 65,000</PlaceInfoItem>

@@ -54,8 +54,13 @@ attractionRouter.post(
 attractionRouter.get(
     '/city/:city/attractions',
     expressAsyncHandler(async (req, res) => {
+        const page = 1; // The page of results you want to retrieve
+        const limit = 10; // The maximum number of results per page
+        const skip = (page - 1) * limit; // The number of documents to skip
+        
         const city = req.params.city;
-        const attraction = await Attraction.findOne({ city });
+        const attraction = await Attraction.findOne({ city }).select('results')
+            .slice('attractions', [skip, skip + limit]);
         if (!attraction) {
             res.status(404).send({
                 success: false,
