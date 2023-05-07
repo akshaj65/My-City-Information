@@ -6,12 +6,14 @@ import { userReducer } from "./reducers/userReducer";
 import { attractionReducer } from "./reducers/attractionReducer";
 import placeTypeReducer from "./reducers/placeTypeReducer";
 import { allPlaceReducer } from "./reducers/allPlacesReducer";
+import { cityReducer } from "./reducers/cityReducer";
 
 const reducer=combineReducers({
     user:userReducer,
     attractions: attractionReducer,
     placeType:placeTypeReducer,
-    places:allPlaceReducer
+    places:allPlaceReducer,
+    cityData:cityReducer
 });
 
 let initialState={};

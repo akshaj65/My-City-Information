@@ -9,24 +9,34 @@ const PlaceBox = styled.div`
   border-radius: 25px;
   margin-bottom: 20px;
   box-shadow: rgba(128, 128, 128, 0.38) 0px 0px 22px; 
+  @media (max-width: 867px) {
+    padding: 27px;
+  }
 `;
 
-const PlaceTitle = styled.h2`
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 10px;
-`;
+// const PlaceTitle = styled.h2`
+//   font-size: 24px;
+//   margin-top: 0;
+//   margin-bottom: 10px;
+// `;
 
 const PlaceDescription = styled.p`
   font-size: 16px;
   margin-top: 0;
   margin-bottom: 20px;
+  @media (max-width: 867px) {
+   font-size:13px;
+  }
 `;
 
 const PlaceInfo = styled.ul`
   list-style-type: none;
   padding: 0;
   margin-bottom: 27px;
+  font-size:14px;
+  @media (max-width: 867px) {
+    font-size:13px;
+   }
 `;
 
 const PlaceInfoItem = styled.li`
@@ -36,6 +46,9 @@ const PlaceInfoItem = styled.li`
 const PlaceLinks = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 867px) {
+    font-size:13px;
+   }
 `;
 
 const PlaceLink = styled.a`
@@ -51,23 +64,25 @@ const PlaceLink = styled.a`
   }
 `;
 
-const CityDesc = () => {
+const CityDesc = ({ city }) => {
   return (
-    <PlaceBox>
-      <PlaceTitle></PlaceTitle>
-      <PlaceDescription>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Bengaluru</strong>, also known as Bangalore, is the capital of the Indian state of Karnataka. It is known as the "Silicon Valley of India" due to its prominent role in the country's information technology industry. It is also famous for its street food and shopping destinations. With a population of over 10 million people, Bengaluru is a cosmopolitan city that blends modernity with traditional Indian culture.</PlaceDescription>
-      <PlaceInfo>
-        <PlaceInfoItem><strong>Main Language:</strong> Kannada</PlaceInfoItem>
-        <PlaceInfoItem><strong>Population:</strong> 65,000</PlaceInfoItem>
-        <PlaceInfoItem><strong>Area code:</strong> +91-(0)80</PlaceInfoItem>
-        <PlaceInfoItem><strong>Pincode(s):</strong> 560 xxx</PlaceInfoItem>
-        <PlaceInfoItem><strong>Famous for:</strong> IT industry, gardens, pleasant climate</PlaceInfoItem>
-      </PlaceInfo>
-      <PlaceLinks>
-        <PlaceLink href="https://www.bbmp.gov.in" target="_blank" rel="noopener noreferrer">Official Website</PlaceLink>
-        <PlaceLink href="https://en.wikipedia.org/wiki/Bangalore" target="_blank" rel="noopener noreferrer">Wikipedia</PlaceLink>
-      </PlaceLinks>
-    </PlaceBox>
+    <>
+      {city && <PlaceBox>
+        {/* <PlaceTitle></PlaceTitle> */}
+        <PlaceDescription>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{city.description}</PlaceDescription>
+        <PlaceInfo>
+          <PlaceInfoItem><strong>Main Language:</strong> {city.placeInfo.mainLanguage}</PlaceInfoItem>
+          <PlaceInfoItem><strong>Population:</strong> {city.placeInfo.population}</PlaceInfoItem>
+          <PlaceInfoItem><strong>Area code:</strong> {city.placeInfo.areaCode}</PlaceInfoItem>
+          <PlaceInfoItem><strong>Pincode(s):</strong> {city.placeInfo.pinCode}</PlaceInfoItem>
+          <PlaceInfoItem><strong>Famous for:</strong> {city.placeInfo.famousFor}</PlaceInfoItem>
+        </PlaceInfo>
+        <PlaceLinks>
+          <PlaceLink href={city.placeLinks[0].url} target="_blank" rel="noopener noreferrer">{city.placeLinks[0].text}</PlaceLink>
+          <PlaceLink href={city.placeLinks[1].url} target="_blank" rel="noopener noreferrer">{city.placeLinks[1].text}</PlaceLink>
+        </PlaceLinks>
+      </PlaceBox>}
+    </>
   );
 };
 

@@ -10,7 +10,7 @@
   position: relative;
   margin: auto;
   overflow: hidden;
-  height: 366px; /* fixed height */
+  height: 100%; /* fixed height */
   border-radius: 19px;
   box-shadow: 0px 0px 20px #19018b69;
 }
@@ -21,8 +21,19 @@
   height: 100%; /* fill the height of the container */
 }
 
-img {
+.mySlides img {
   width: 500px;; /* set image width to be equal to or less than the container width */
   height: 413px; /* fill the height of the slide */
   object-fit: cover; /* maintain aspect ratio */
+}
+
+
+@media (max-width: 867px) { 
+  .slideshow-container {
+    height: 300px;
+  }
+  .mySlides img{
+    width: 300px;
+    height: 300px;
+  }
 }

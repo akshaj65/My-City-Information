@@ -15,7 +15,7 @@ li {
     position: sticky;
     top: 0;
     background-color: white;
-    z-index: 999;
+    z-index: 10001;
     text-align: end;
 }
 

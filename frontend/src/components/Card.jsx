@@ -5,7 +5,6 @@ import '../styles/card.css';
 const Card = (props) => {
     // console.log(props.image);
     const navigate=useNavigate();
-
     const handleClick=()=>{
         navigate(`/city/${props.name}`)
     }

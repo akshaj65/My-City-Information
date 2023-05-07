@@ -8,15 +8,15 @@
     width: 289px;
     color: #003c70;
     display: flex;
-flex-direction: row-reverse;
-justify-content: space-between;
+    flex-direction: row-reverse;
+    justify-content: space-between;
   }
   
   /* Style the weather icon */
   .weather-icon {
     margin-right: -4px;
     margin-top: -11px;
-    height: 68px;
+    /* height: 68px; */
   }
   .weather-icon img {
     display: block;
@@ -59,3 +59,28 @@ justify-content: space-between;
     /* margin-right: 45px; */
   }
   
+
+  @media (max-width: 867px) { 
+    .weather-container{
+      width: 270px;
+    }
+    .weather-info {
+      height: 85px;
+      padding: 0 7px;
+    }
+    .weather-icon {
+      margin-right: -5px;
+      margin-top: -13px;
+    }
+    .weather-icon img {
+      width: 71px;
+      height: 69px;
+    }
+
+    .temperature {
+      font-size: 23px;
+    }
+    .temperature>span:first-of-type{
+      font-size: 28px;
+    }
+  }

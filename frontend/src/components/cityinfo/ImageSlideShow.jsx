@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './slideshow.css';
+import '../../styles/slideshow.css';
 
 const ImageSlideshow = ({ images }) => {
   const [slideIndex, setSlideIndex] = useState(0);

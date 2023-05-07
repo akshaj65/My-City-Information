@@ -1,7 +1,7 @@
 /* header */
 .cityInfo-header{
     max-width: 1110px;
-    margin: 0 auto;
+    margin: 13px auto;
     padding-top: 44px;
     border-radius: 5px;
     display: flex;
@@ -52,7 +52,7 @@
 .cityInfo-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0 auto;
     max-width: 1110px;
 }
@@ -67,7 +67,10 @@
   .cityInfo-first-box {
     /* background-color: #938282; */
     width: 100%;
-    margin: auto;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
   }
   
@@ -80,21 +83,25 @@
   }
   
   .cityImages {
-    /* background-color: #d0d0d0; */
-height: 64%;
-margin: 37px auto;
-width: 500px;
+    height: 366px;
+    margin: 37px auto;
+    width: 500px;
   }
   
   .cityWeather {
     /* background-color: #b0b0b0; */
-/* width: 273px;
-height: 200px;
-margin: 0 auto; */
-/* max-width: 400px; */
-margin-bottom: 24px;
+    /* width: 273px;
+    height: 200px;
+    margin: 0 auto; */
+    /* max-width: 400px; */
+    margin-bottom: 24px;
   }
-  
+  .cityInfo-placeList-header{
+    padding: 10px 3px;
+    margin-bottom: 13px;
+    border-bottom: 3px solid;
+    width: 50%;
+  }
   .cityInfo-bottom-section {
     display: flex;
     flex-direction: row;
@@ -102,25 +109,34 @@ margin-bottom: 24px;
   }
   
   .cityInfo-list-box {
-    height: 500px;
+    height: 567px;
     width: 50%;
+    display: flex;
   }
   
   .cityInfo-map-box {
-    height: 500px;
+    height: 567px;
     width: 50%;
     padding: 0 19px;
   }
-  
+  .cityInfo-map-box-container{
+    height: 567px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 6px;
+    bottom: 74px;
+    position: relative;
+  }
 
   /* filters */
 .cityInfo-filterBox {
   /* padding: 12px 0; */
-    width: 236px;
-    height: 40px;
-    margin: 8px;
-    margin-bottom: 24px;
-
+  width: 236px;
+  height: 40px;
+  margin: 8px;
+  margin-bottom: 24px;
+  position: relative;
+  bottom: 71px;
 }
 .cityInfo-filterBox label{
   margin-right: 14px;
@@ -172,4 +188,131 @@ select option {
 
 select optgroup {
   font-weight: bold;
+}
+
+
+@media (max-width: 867px) { 
+  .cityInfo-top-section {
+    flex-direction: column-reverse;
+  }
+  .cityInfo-header {
+    margin: 12px 29px;
+    margin-top: 21px;
+    padding-top: unset;
+  }
+  .cityInfo-header-rightSide {
+    margin-right: 0;
+  }
+  .cityInfo-header-city-name {
+    font-size: 25px;
+  }
+  .cityInfo-second-box{
+    height: 518px;
+    justify-content: space-between;
+  }
+  .cityImages {
+    margin-bottom: 14px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .cityInfo-first-box{
+    padding: 0 19px;
+  }
+  .cityInfo-placeList-header{
+    width: unset;
+    margin: 0 19px;
+  }
+  .cityInfo-bottom-section {
+    flex-direction: column-reverse;
+    height: unset;
+  }
+  .cityInfo-list-box {
+    height: 229px;
+    width: 303px;
+    order: 1;
+    margin: 15px auto;  
+  }
+  .cityInfo-map-box {
+    height: 338px;
+    width: 80%;
+    order: 0;
+    margin: 0 auto;
+  }
+  .cityInfo-map-box-container{
+    height: 300px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 6px;
+    bottom: 74px;
+    position: relative;
+  }
+    /* filters */
+.cityInfo-filterBox {
+  /* padding: 12px 0; */
+    width: 150px;
+    height: 54px;
+    margin: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    top: 22px;
+    z-index: 1000;
+    left: 80px;
+  }
+  .cityInfo-filterBox::after {
+    bottom: 38px;
+    left: 105px;
+  }
+  .cityInfo-filterBox label {
+    display: none;
+  }
+  .cityInfo-filterBox select{
+    margin: 7px;
+    padding-left: 0.8em;
+    width: 133px;
+    border: none;
+    box-shadow: 0px 0px 8px #000000ba;
+    border-radius: 16px;
+    font-weight: bold;
+  }
+
+  .cityInfo-header-rightSide input{
+    cursor: pointer;
+    height: unset;
+    width: 16px;
+  }
+
+  .cityInfo-header-rightSide input:focus,
+  .cityInfo-header-rightSide  input[type="text"]:not(:placeholder-shown) {
+    cursor:initial;
+    width: unset;
+  }
+  .cityInfo-header-rightSide svg {
+    cursor: pointer;
+   pointer-events:none;
+   
+  }
+  .cityInfo-header-rightSide .gps {
+   pointer-events:none;
+    visibility: none;
+    opacity: 0;
+  }
+  
+  /* .cityInfo-header-rightSide input:focus + .gps, */
+  /* If the .gps element is not an immediate sibling of the input element, you can use the general sibling combinator (~) instead of the adjacent sibling combinator (+). This will target the .gps element if it is a sibling of the input element, regardless of its position: */
+  .cityInfo-header-rightSide input:focus ~ .gps,
+  .cityInfo-header-rightSide  input[type="text"]:not(:placeholder-shown)~ .gps{
+    pointer-events:auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .cityInfo-header-rightSide  input:focus ~ div >svg,
+  .cityInfo-header-rightSide  input[type="text"]:not(:placeholder-shown)~ div >svg {
+    pointer-events: auto;
+    
+   }
+   .cityInfo-header-rightSide .searchIcon{
+    margin: 0px 3px;
+    width: 17px;
+   }
 }

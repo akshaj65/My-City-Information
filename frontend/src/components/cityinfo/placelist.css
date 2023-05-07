@@ -57,10 +57,17 @@
   color: #666;
   font-weight: bold;
 }
-.placeAddress{
+.placeAddress,
+.placePhone,.placeTags,.placeTags >span{
   font-size: 15px;
+  margin: 6px 0;
 }
-
+.placeTags{
+  margin-bottom: 11px;
+}
+.placeNoContent{
+  margin: 53px 53px;
+}
 .placeImages {
   display: flex;
   flex-direction: column;
@@ -98,7 +105,7 @@
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch; /* for smoother scrolling on iOS devices */
   scroll-snap-type: x mandatory; /* for snapping each card to a specific point while scrolling */
-  scroll-behavior: smooth; /* for smooth scrolling */
+  scroll-behavior: unset; /* for smooth scrolling */
   scrollbar-width: none; /* to hide the scrollbar */
   padding: 10px;
   /* margin-top: 18px; */
@@ -126,4 +133,57 @@
   margin: 6px auto; /* the margin between each card */
   flex: 0 0 auto;
   scroll-snap-align: start; /* to snap each card to the start of the scroll container */
+}
+
+.placeList-btn{
+  display: none;
+}
+
+
+@media (max-width: 867px) { 
+  .placeList{
+    flex-direction: column;
+    margin: 0 6px;
+    padding: unset;
+    margin-top: unset;
+    box-shadow: 0 0px 7px rgba(0, 0, 0, 0.36);
+  }
+  .placeCard {
+    margin:unset;
+    margin-left: 14px;
+    min-width: unset;
+    width: 227px;
+    height: 229px;
+  }
+  .placeDescription{
+    font-size: 12px;
+  }
+  .placeName{
+    font-size: 15px;
+  }
+  .placeAddress,
+  .placePhone,
+  .placeTags,.placeTags >span {
+    font-size: 12px;
+  }
+  .placeInfo {
+    padding: 12px 17px;
+  }
+  .placeNoContent{
+    margin:58px 20px;
+  }
+  .placeList-btn{
+    display: block;
+    font-size: 30px;
+    z-index: 1000;
+    /* color: #1f3555; */
+    color: #726f6fd1  ;
+    border-radius: 29px;
+    width: 42px;
+    background-color: #ffffff;
+    box-shadow: 0 0px 12px #c5c5c591;
+    border: 2px solid;
+    height: 40px;
+    align-self: center;
+  }
 }

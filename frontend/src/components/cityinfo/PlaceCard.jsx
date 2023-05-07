@@ -1,81 +1,15 @@
-import React from 'react';
-
-// const PlaceCard = ({ place}) => {
-//     const { name, address, phone, website, tags } = place;
-
-//     return (
-//         <div className="card" key={place.name}>
-//             <h2>{name}</h2>
-//             <p>Address: {address}</p>
-//             {phone && <p>Phone: {phone}</p>}
-//             {website && <p>Website: {website}</p>}
-//             {tags && <p>Tags: {tags.join(', ')}</p>}
-
-//         </div>
-//     );
-// };
-
-
-// export default PlaceCard;
-
-
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import { IconContext } from 'react-icons';
+import { CiHospital1 } from "react-icons/ci";
+import { FaHotel, FaSchool, FaUniversity } from "react-icons/fa";
+import { TbHomeHeart } from "react-icons/tb";
+import { GrUserPolice } from "react-icons/gr";
 
-const Card = styled.div`
-display: flex;
-border-radius: 8px;
-box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px;
-flex-direction: column;
-overflow: hidden;
-margin: 22px auto;
-width: 300px;
-height:150px
-`;
-
-// const CardImage = styled.img`
-//   width: 100%;
-//   height: 180px;
-//   object-fit: cover;
-// `;
-
-const CardContent = styled.div`
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #f9f9f9;
-`;
-
-const CardTitle = styled.h3`
-  font-size: 20px;
-  margin: 0;
-`;
-
-const CardSubtitle = styled.h4`
-  font-size: 18px;
-  margin: 0;
-  color: #666;
-`;
-
-const CardDetails = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-`;
-
-const CardAddress = styled.p`
-  margin: 0;
-  font-size: 14px;
-`;
-
-const CardTags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
 
 const Tag = styled.span`
-  background-color: #eee;
+ color:white !important;
+background-color: rgb(11, 36, 71);
   border-radius: 4px;
   padding: 4px 8px;
   margin-right: 8px;
@@ -84,26 +18,71 @@ const Tag = styled.span`
   white-space: nowrap;
 `;
 
-function PlaceCard({ place }) {
-  const { _id,name, image, addressLines, tags } = place
+
+
+function PlaceCard({ place, activePlace, setActivePlace, placeType }) {
+  const { _id, name, phone, website, address_lines, tags } = place
+
+  const categoryImageMap = {
+    Hospitals: <CiHospital1 />,
+    Hotels: <FaHotel />,
+    Colleges: <FaUniversity />,
+    Schools: <FaSchool />,
+    OldAgeHomes: <TbHomeHeart />,
+    PoliceStations: <GrUserPolice />
+  };
+
+  // Get the image URL based on the category
+  const ImageIcon = categoryImageMap[placeType];
   return (
-    <Card key={_id}>
-      {/* <CardImage src={image} alt={name} /> */}
-      <CardContent>
-        <div>
-          <CardTitle>{name}</CardTitle>
-        </div>
-        <CardDetails>
-          {addressLines && <CardAddress>{addressLines}</CardAddress>}
-          {tags && <CardTags>
+    <div
+      className={`placeCard${_id === activePlace ? ' active' : ''}`}
+      key={_id}
+      onClick={() => setActivePlace(activePlace === _id ? null : _id)}
+    >
+
+      {_id === activePlace ? (
+        <div className="placeInfo">
+          {/* <h2 className="placeName">{name}</h2> */}
+          <div className='placeTags'>
+            {tags[0] && <><span>Tags:</span>&nbsp;&nbsp;</>}
             {tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}
-          </CardTags>
-          }
-        </CardDetails>
-      </CardContent>
-    </Card>
+          </div>
+          {address_lines.length !== 0 && <p className="placeAddress"><span>Address:</span>&nbsp;&nbsp;{address_lines.join(", ")}</p>}
+          {phone && <p className="placePhone"><span>Phone:</span>&nbsp;&nbsp;<strong>{phone}</strong></p>}
+          {website && <p className="placeWebsite"><span>Website:</span>&nbsp;&nbsp;<strong>{website}</strong></p>}
+          {!address_lines.length !== 0 && !phone && !website && <p className="placeNoContent">Data not available</p>}
+        </div>
+      ) : (
+        <Fragment>
+          <div className="placeImages " style={{ 'height': '109px' }} key={_id}>
+            <IconContext.Provider value={{
+              style: {
+                width: '100%',
+                height: '70%'
+              }
+            }}>
+              {ImageIcon}
+            </IconContext.Provider>
+          </div>
+          <div className="placeInfo">
+            <div className="placeDetails">
+              <h2 className="placeName">{name}</h2>
+
+              {tags &&
+                <div>
+                  {tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </div>
+              }
+            </div>
+          </div>
+        </Fragment>
+      )}
+    </div>
   );
 }
 

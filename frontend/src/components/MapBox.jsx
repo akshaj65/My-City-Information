@@ -94,8 +94,7 @@
       <>
         <MapContainer
           // whenCreated={setMap} 
-
-          style={{ height: '500px', width: '100%', borderRadius: '12px', padding: '6px' }}
+          className='cityInfo-map-box-container'
 
         >
           <TileLayer
