@@ -1,16 +1,17 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import './placelist.css'
-import { getAttraction } from "../../actions/attractionAction";
+import { getAttraction } from "../../redux/actions/attractionAction";
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPlaces } from "../../actions/allPlacesAction";
+import { fetchPlaces } from "../../redux/actions/allPlacesAction";
 import PlaceCard from "./PlaceCard";
 import AttractionList from "./AttractionList";
+import Loader from "../Loader";
 
 
-function PlaceList({ placeType, setMapData, activeCard, setActiveCard }) {
+function PlaceList({ placeType, cityName, setMapData, activeCard, setActiveCard }) {
   const dispatch = useDispatch();
-  const { loading, error, attraction } = useSelector(state => state.attractions)
-  const { data } = useSelector(state => state.places)
+  const { attractionLoading, attractionError, attraction } = useSelector(state => state.attractions)
+  const { allPlacesError, allPlacesLoading, data } = useSelector(state => state.places)
 
   const BREAKPOINT = 768; // Change this value to your desired breakpoint
 
@@ -23,22 +24,22 @@ function PlaceList({ placeType, setMapData, activeCard, setActiveCard }) {
   useEffect(() => {
 
     if (placeType === 'Attractions') {
-      console.log(placeType);
-      dispatch(getAttraction('Bengaluru'));
+      dispatch(getAttraction(cityName));
 
     } else {
-      dispatch(fetchPlaces(placeType, 'Bengaluru'));
+      dispatch(fetchPlaces(placeType, cityName));
     }
 
-  }, [dispatch, placeType])
+  }, [dispatch, cityName, placeType])
 
   useEffect(() => {
     if (placeType === 'Attractions') {
+      // console.log(attraction);
       setMapData(attraction);
     } else {
       setMapData(data);
     }
-  }, [attraction, data, setMapData,placeType]);
+  }, [attraction, data, setMapData, placeType]);
 
 
   const handleMouseDown = (event) => {
@@ -140,12 +141,26 @@ function PlaceList({ placeType, setMapData, activeCard, setActiveCard }) {
 
         {/* {console.log(placeType)} */}
         {placeType === 'Attractions' ? (
-          attraction && <AttractionList attraction={attraction} setActiveAttraction={setActiveCard} activeAttraction={activeCard} />
+          attractionLoading ? (
+            <div><Loader /></div>
+
+          ) : attractionError ? (
+            <div className="error">{attractionError}</div>
+          ) :
+            attraction && <AttractionList attraction={attraction} setActiveAttraction={setActiveCard} activeAttraction={activeCard} />
+
         ) : (
           <Fragment>
-            {data && data.map((place) => (
-              <PlaceCard key={place._id} place={place} placeType={placeType} setActivePlace={setActiveCard} activePlace={activeCard}/>
-            ))}
+            {allPlacesLoading ? (
+              <div><Loader /></div>
+
+            ) : allPlacesError ? (
+              <div className="error">{allPlacesError}</div>
+            ) :
+              data && data.map((place) => (
+                <PlaceCard key={place._id} place={place} placeType={placeType} setActivePlace={setActiveCard} activePlace={activeCard} />
+              ))
+            }
           </Fragment>
         )}
 

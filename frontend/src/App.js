@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { loadUser } from './actions/userAction';
+import { loadUser } from './redux/actions/userAction';
 import './App.css';
 import About from "./pages/AboutPage";
 import Auth from './pages/Auth/auth';
+import BusSchedulePage from './pages/BusSchedulePage';
 import CityInfoPage from './pages/CityInfoPage';
 import City from './pages/CityPage';
 import Home from './pages/HomePage';
 import NoPage from './pages/NoPage';
-import store from './store';
+import RailwayInfoPage from './pages/RailwayInfoPage';
+import store from './redux/store';
 const routes = [
   { path: '/', component: <Home/> },
   { path: '/login', component: <Auth/> },
@@ -16,6 +18,8 @@ const routes = [
   { path: '/about', component: <About/> },
   { path: '/city', component: <City/> },
   { path: '/city/:city', component: <CityInfoPage/> },
+  { path: '/city/:city/bus', component: <BusSchedulePage/> },
+  { path: '/city/:city/train', component: <RailwayInfoPage/> },
   { path: '*', component: <NoPage/> }
 ];
 

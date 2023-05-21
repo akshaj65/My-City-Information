@@ -64,7 +64,7 @@ attractionRouter.get(
         if (!attraction) {
             res.status(404).send({
                 success: false,
-                message: 'City Not Found'
+                message: 'City Attractions Not Found'
             });
         } else {
             res.status(200).send({

@@ -41,7 +41,7 @@
       return () => {
         map.off('moveend', handleMoveEnd);
       };
-    }, [handleMoveEnd]);
+    }, [map,handleMoveEnd]);
 
     useEffect(() => {
       if (map && activeCard) {
@@ -76,7 +76,9 @@
     };
 
     useEffect(() => {
-      setData(mapData)
+      if(mapData){
+        setData(mapData)
+      }
     }, [mapData])
 
     const markerRefs = useRef({});
@@ -88,7 +90,7 @@
       }
     }, [activeCard]);
 
-    const [map, setMap] = useState(null);
+    // const [map, setMap] = useState(null);
 
     return (
       <>

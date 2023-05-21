@@ -1,0 +1,95 @@
+.railwayInfo-container
+{
+    width: 60vw;
+    margin: 22px auto;
+    /* background-color: #acbbd1; */
+  }
+  
+  .railwayInfo-header {
+    display: flex;
+    align-items: center;
+    padding-left: 88px;
+    background-color: #acbbd1;
+    /* width: 666px; */
+    /* justify-content: space-between; */
+    /* margin: 0 auto; */
+  }
+  .railwayInfo-header svg{
+    width: 79px;
+    height: 58px;
+  }
+  .parta {
+    display: flex;
+    align-items: center;
+    width: 248px;
+    height: 120px;
+    margin: 7px 30px;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    /* border: 1px solid #ccc; */
+    /* flex-direction: column; */
+    /* background-color: #e6e6fab2; */
+  }
+  
+  .parta button {
+    margin: 0 10px;
+    padding: 10px;
+    /* background-color: #7a7a7a; */
+    background-color: #4545458a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .parta .parta-active{
+    background-color: #3d5678;
+    box-shadow: 0px 1px 5px #6d6969;
+  }
+  
+  .partb {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-evenly;
+    background-color: #e6e6fab2;
+    width: 393px;
+    margin: 8px;
+  }
+
+  
+  .partb input[type='text'],
+  .partb input[type='date'] {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .partb button {
+    padding: 10px;
+    background-color: #1b3253;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .partb-tbws{
+    flex-direction: row;
+    height: 92px;
+    width: unset;
+  }
+  .partb-tbws button{
+    position: absolute;
+    top: 192px;
+    right: 686px;
+    width: 139px;
+  }
+  .partb-tbws input[type="text"]{
+    height: 35px;
+  }

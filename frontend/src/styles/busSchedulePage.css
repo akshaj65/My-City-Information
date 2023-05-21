@@ -1,0 +1,118 @@
+.busSchedule-container{
+  width: 60vw;
+  margin: 26px auto;
+
+}
+.busSchedule-header {
+  background-color: #acbbd1;
+  border-bottom: 1px solid #e5e5e5;
+  /* padding: 10px; */
+  padding: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 112px;
+  margin-bottom: 40px;
+}
+
+
+.busShedule-header .fromToLayout{
+  flex: 2;
+  display: flex;
+  justify-content: space-evenly;
+}
+.busSchedule-header svg {
+  width: 56px;
+  height: 54px;
+}
+.fromToLayout{
+  flex: 1.5;
+  display: flex;
+  justify-content: space-evenly;
+}
+.busSchedule-header .fromToLayout input[type="text"] {
+  border: 1px solid #7b7b7b ;
+  border-radius: 4px;
+  padding: 10px;
+  text-transform: capitalize;
+  /* margin-right: 10px; */
+}
+.busSchedule-header .fromToLayout input:focus {
+  outline: none;
+  border-bottom: 2px solid rgb(91, 93, 243);
+  font-weight: bold;
+  color: #0b2447;
+}
+.fromToLayout span{
+  font-size: 28px;
+}
+.busSchedule-search{
+  flex: 1;
+}
+.busSchedule-header .busSchedule-search button {
+  background-color: #ffcc00;
+  background-color: #525252;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 56px;
+}
+.busSchedule-search button:hover{
+  box-shadow: 0px 2px 3px 0 rgba(0,0,0,.3);
+}
+
+
+/* .busSchedule-destAvailable{
+ 
+} */
+  
+.busSchedule-destAvailable .destCities{
+  display: flex;
+  word-wrap: break-word;
+  margin-left: 25px;
+  margin-bottom: 30px;
+}
+  .buses {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* text-align: center; */
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    color: #687987;
+  }
+  
+  .column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .busCard {
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 300px;
+  }
+  
+  .busInfo > * {
+    margin-bottom: 10px;
+  }
+  
+  .busName {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .busType,
+  .busRoute,
+  .busDuration,
+  .busDepartureArrival,
+  .busPrice {
+    font-size: 16px;
+  }
+  

@@ -18,7 +18,7 @@ const getFunction = (item, itemModel) => {
             if (!data) {
                 res.status(404).send({
                     success: false,
-                    message: 'City Not Found'
+                    message: 'City '+item+' Not Found'
                 });
             } else {
                 res.status(200).send({

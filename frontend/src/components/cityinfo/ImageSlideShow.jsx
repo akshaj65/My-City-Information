@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../styles/slideshow.css';
 
-const ImageSlideshow = ({ images }) => {
+const ImageSlideshow = ({ cityName }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isReversed, setIsReversed] = useState(false);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,17 +25,37 @@ const ImageSlideshow = ({ images }) => {
 
     return () => clearTimeout(timer);
   }, [slideIndex, images, isReversed]);
+
+
+  const importAll = useCallback((r) => {
+    return r.keys()
+      .filter(filename => filename.startsWith(`./${cityName}/`))
+      .map((key) => ({
+        name: key.substr(2),
+        src: r(key),
+      }));
+  }, [cityName]);
+
+  useEffect(() => {
+    const importImages = async () => {
+      const imageFiles = await importAll(require.context('../../Images', true, /\.(png|jpe?g|gif|jfif)$/));
+      setImages(imageFiles);
+    };
+    importImages();
+  }, [importAll]);
+
+
   return (
     <div className="slideshow-container">
       <div
         className="slides-wrapper" style={{ transform: `translateX(-${slideIndex * 100}%)` }}
       >
-        {images.map((element) => {
-          element = element[1];
-          // console.log(element.id);
+        {images.map((image) => {
+          // image = image[1];
+          // console.log(image.id);
           return (
-            <div key={element.id} className="mySlides">
-              <img key={element.id} src={element.image}  alt="myimage" />
+            <div key={image.name} className="mySlides">
+              <img key={image.name} src={image.src} alt={image.name} />
             </div>
           );
         })}

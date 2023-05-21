@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import { cities_cards, hillStation_cards, beach_cards } from "../components/cardsArray";
 import "../styles/cityPage.css";
 import NavBar from "../components/NavBar.jsx";
+import SOSPhoneNumbers from "../components/SOSPhoneNumbers";
 
 
 
@@ -37,6 +38,7 @@ const TestHome = () => {
   return (
     <>
       <NavBar />
+      <SOSPhoneNumbers/>
       <div className="flexContainer">
         <div  className="cityHeader-img">
         <header className="cityHeader" >

@@ -1,0 +1,108 @@
+.trainSchedule-routes::before {
+  content: "";
+  position: absolute;
+  top: 53px;
+  left: 2px;
+  height: calc(100% - 133px);
+  width: 4px;
+  background: #e4dfdf;
+  border-radius: 10px;
+  }
+.trainSchedule-routes{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.trainSchedule-ul{
+  display: flex;
+}
+.trainSchedule-ul>li{
+  padding: 2px 22px;
+}
+.trainSchedule-routes .routeItem {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e1e7ee;
+  }
+  .routeItem-dayTag{
+    width: 54px;
+    height: 24px;
+    border-radius: 4px;
+    background: #4f525a;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .routeItem-upperRow {
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    padding: 8px 0;
+    position: relative;
+  }
+  
+  .routeItem-stationName::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    display: flex;
+    border-radius: 100%;
+    border: 3px solid #777;
+    position: absolute;
+    top: 5px;
+    left: -23px;
+    background: #fff;
+    z-index: 1;
+  }
+  
+  .routeItem-stationName {
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    color: #365a8d;
+  }
+  
+  .routeItem-bottomRow {
+    background: #fff;
+    display: flex;
+    padding: 0 0 20px;
+    border-radius: 4px;
+  }
+  
+  /* .grey75 {
+    color: #4f525a;
+  }
+   */
+  .routeItem-col:first-of-type {
+    border-left: none;
+    text-align: left;
+  }
+  
+  .routeItem-col {
+    flex: 1 1;
+    flex-shrink: 1;
+    flex-shrink: 0;
+    font-size: 15px;
+    border-left: 1px solid #ccc;
+    text-align: center;
+    color: #4f525a;
+  }
+  
+  .routeItem-col >span{
+    font-weight: 700;
+    color: #141823;
+    font-size: 16px;
+    line-height: 16px;
+    margin-left: 8px;
+  }
+.routeItem-col-city{
+  text-transform: capitalize;
+}

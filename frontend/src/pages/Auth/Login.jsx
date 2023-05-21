@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, login } from '../../actions/userAction';
+import React, {  useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearErrors, login } from '../../redux/actions/userAction';
 import '../../styles/auth.css';
-import Swal from "sweetalert2";
 
 const Login = ({ isActive, isLogin }) => {
 

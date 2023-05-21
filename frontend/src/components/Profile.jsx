@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../actions/userAction';
+import { logout } from '../redux/actions/userAction';
 import logo from '../Images/userlogo.png'
 import '../styles/profile.css'; // Import the CSS file
 

@@ -5,7 +5,13 @@
   gap: 20px;
   flex-direction: column;
 }
-
+.placeList .error{
+  text-transform: capitalize;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .placeCard {
   width: 298px;
   height: 250px;
@@ -77,7 +83,8 @@
 .placeImage {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain;
+  /* object-fit: contain; */
+  object-fit: fill;
   opacity: 0;
   transition: opacity 1s ease;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
-import { register } from '../../actions/userAction';
+import { register } from '../../redux/actions/userAction';
 import '../../styles/auth.css'
 
 

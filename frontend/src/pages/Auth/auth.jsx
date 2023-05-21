@@ -6,7 +6,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Loader from '../../components/Loader'
 // import Swal from 'sweetalert2'
-import { clearErrors } from '../../actions/userAction'
+import { clearErrors } from '../../redux/actions/userAction'
 import { useNavigate } from 'react-router-dom'
 const Auth = () => {
 

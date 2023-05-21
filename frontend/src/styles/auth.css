@@ -42,7 +42,7 @@
   color: #0b2447;;
 }
 
-input:focus {
+.formGroup input:focus {
   outline: none;
   border-bottom: 2px solid rgb(91, 243, 131);
   font-size: 17px;

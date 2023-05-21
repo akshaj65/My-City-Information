@@ -1,63 +1,76 @@
 import mongoose from "mongoose";
 
 const busSchema = new mongoose.Schema({
-    operatorName: {
+    srcStn: {
         type: String,
         required: true
     },
-    arrivalTime: {
+    destStn: {
         type: String,
         required: true
     },
-    departureTime: {
-        type: String,
-        required: true
-    },
-    fare: {
-        type: String,
-        required: true
-    },
-    busType: {
-        type: String,
-    },
-    amenities: {
-        type: [String],
-    },
-    boardingPoint: [
+    results: [
         {
-            name: {
+            operatorName: {
                 type: String,
-                // required: true
+                required: true
             },
-            landmark: {
+            arrivalTime: {
                 type: String,
-                default: ""
+                required: true
             },
-            time: {
+            departureTime: {
                 type: String,
-                // required: true
-            }
-        }
-    ],
-    droppingPoint: [
-        {
-            name: {
-                type: String,
-                // required: true
+                required: true
             },
-            landmark: {
+            fare: {
                 type: String,
-                default: ""
+                required: true
             },
-            time: {
+            busType: {
                 type: String,
-                // required: true
-            }
+            },
+            amenities: {
+                type: [String],
+            },
+            boardingPoint: [
+                {
+                    name: {
+                        type: String,
+                        // required: true
+                    },
+                    landmark: {
+                        type: String,
+                        default: ""
+                    },
+                    time: {
+                        type: String,
+                        // required: true
+                    }
+                }
+            ],
+            droppingPoint: [
+                {
+                    name: {
+                        type: String,
+                        // required: true
+                    },
+                    landmark: {
+                        type: String,
+                        default: ""
+                    },
+                    time: {
+                        type: String,
+                        // required: true
+                    }
+                }
+            ]
         }
     ]
+
 });
 
 // Create a bus model
 const Bus = mongoose.model('Bus', busSchema);
 
-export default Bus;
+export { Bus };

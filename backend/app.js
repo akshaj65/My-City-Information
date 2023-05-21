@@ -7,6 +7,8 @@ import cookieParser from "cookie-parser";
 import attractionRouter from "./routers/attractionRouter.js";
 import otherRouters from "./routers/otherRouters.js"
 import cityRouter from "./routers/cityRouter.js";
+import busRouter from "./routers/busRouter.js";
+import trainRouter from "./routers/trainRouter.js";
 const app = express();
 
 app.use(express.json());
@@ -23,5 +25,7 @@ app.use("/api/v1",userRouter);
 app.use("/api/v1",attractionRouter);
 app.use('/api/v1',otherRouters);
 app.use('/api/v1',cityRouter);
+app.use('/api/v1/',busRouter);
+app.use('/api/v1/',trainRouter);
 app.use(errorMiddleware);
 export default app;

@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/cityInfoPage.css';
 import CityDesc from '../components/cityinfo/CityDesc';
 import ImageSlideshow from '../components/cityinfo/ImageSlideShow';
 import Weather from '../components/cityinfo/Weather';
 import MapBox from '../components/MapBox';
 import NavBar from '../components/NavBar'
-import '../styles/cityInfoPage.css'
-import Bangalore from '../components/cityinfo/loadImages.js'
 import PlaceList from '../components/cityinfo/PlaceList';
 import { Link, useLocation } from 'react-router-dom';
 import Search from '../components/Search';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPlaceType } from '../actions/placeTypeAction';
-import { getCity } from '../actions/cityAction';
+import { setPlaceType } from '../redux/actions/placeTypeAction';
+import { getCity } from '../redux/actions/cityAction';
 import CityNotFound from '../components/cityinfo/CityNotFound';
 import Loader from '../components/Loader';
+import SOSPhoneNumbers from '../components/SOSPhoneNumbers';
 
 function CityInfoPage() {
-  const cityName =  useLocation().pathname.split('/').pop();
-  const images = Object.entries(Bangalore);
+  const cityName = useLocation().pathname.split('/').pop();
   const dispatch = useDispatch();
   const placeType = useSelector(state => state.placeType.placeType);
   const { error, loading, city } = useSelector(state => state.cityData);
@@ -37,12 +35,13 @@ function CityInfoPage() {
   return (
     <div>
       <NavBar />
+      <SOSPhoneNumbers />
       {loading ? (
         <div><Loader /></div>
 
       ) : error ? (
         error === "City Not Found" ? <><CityNotFound /></> : <div>{error}</div>
-      ) : (!loading && city.data && (
+      ) : (!loading && city && city.data && (
         <div>
           <div className="cityInfo-header">
             <div className="cityInfo-header-leftSide">
@@ -71,19 +70,19 @@ function CityInfoPage() {
               </div>
               <div className="cityInfo-second-box">
                 <div className="cityImages">
-                  <ImageSlideshow images={images} />
+                  <ImageSlideshow cityName={cityName} />
                 </div>
                 <div className="cityWeather">
                   <Weather />
                 </div>
               </div>
             </div>
-            <h2 className='cityInfo-placeList-header'><span style={{ color: '#777575' }}>{placeType}</span> in Bengaluru</h2>
+            <h2 className='cityInfo-placeList-header'><span style={{ color: '#777575' }}>{placeType}</span> in {cityName}</h2>
             <div className="cityInfo-bottom-section">
 
               <div className="cityInfo-list-box">
-
-                <PlaceList placeType={placeType} setMapData={setMapData} activeCard={activeCard} setActiveCard={setActiveCard} />
+                {console.log(placeType,'placeType')}
+                <PlaceList placeType={placeType} cityName={cityName} setMapData={setMapData} activeCard={activeCard} setActiveCard={setActiveCard} />
               </div>
               <div className="cityInfo-map-box">
                 <div className="cityInfo-filterBox">
