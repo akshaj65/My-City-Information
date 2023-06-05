@@ -1,20 +1,20 @@
 import axios from "axios";
-import { BUS_FAIL, BUS_REQUEST, BUS_SUCCESS, CLEAR_ERRORS } from "../constants/busConstants";
+import { TRAIN_FAIL, TRAIN_REQUEST, TRAIN_SUCCESS, CLEAR_ERRORS } from "../constants/trainConstants";
 import { API_URL } from '../../config/env';
 
 
 
-export const getBuses = (srcStn,destStn) => async (dispatch) => {
+export const getTrains = (stnStn) => async (dispatch) => {
     try {
-        dispatch({ type: BUS_REQUEST });
-        const {data}= await axios.get(`${API_URL}/api/v1/buses?srcStn=${srcStn}&destStn=${destStn}`)
+        dispatch({ type: TRAIN_REQUEST });
+        const {data}= await axios.get(`${API_URL}/api/v1/trains?stationCode=${stnStn}`)
         dispatch({
-            type:BUS_SUCCESS,
+            type:TRAIN_SUCCESS,
             payload:data.data,
         })
     } catch (error) {
         dispatch({
-            type: BUS_FAIL,
+            type: TRAIN_FAIL,
             payload: error.response.data.message,
         })
     }

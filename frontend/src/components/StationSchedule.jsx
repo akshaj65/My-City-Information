@@ -1,5 +1,50 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Loader from './Loader';
+import { API_URL } from '../config/env';
+
+const stationData = [
+  {
+    "trainNumber": "20655",
+    "trainName": "YPR-UBL SF EXPRESS",
+    "trainRoute": "Yasvantpur Jn (YPR) - Hubli Jn (UBL)",
+    "trainType": "Superfast",
+    "trainClass": "2S,2A,3A,SL",
+    "dayOfRun": "Fri",
+    "schedule": {
+      "arrival": "SRC",
+      "departure": "23:50"
+    }
+  },
+  {
+    "trainNumber": "06563",
+    "trainName": "YPR-MRDW EXP SPL",
+    "trainRoute": "Yasvantpur Jn (YPR) - Murdeshwar (MRDW)",
+    "trainType": "Train On Demand",
+    "trainClass": "GEN,2A,3A,SL",
+    "dayOfRun": "Sat",
+    "schedule": {
+      "arrival": "SRC",
+      "departure": "23:55"
+    }
+  },
+  {
+    "trainNumber": "16565",
+    "trainName": "YPR-MAQ EXPRESS",
+    "trainRoute": "Yasvantpur Jn (YPR) - Mangalore Central (MAQ)",
+    "trainType": "Mail/express",
+    "trainClass": "2S,SL,3A,2A,GEN",
+    "dayOfRun": "Daily",
+    "schedule": {
+      "arrival": "SRC",
+      "departure": "23:55"
+    }
+  }]
+
+
 
 const Station = styled.li`
   display: flex;
@@ -16,6 +61,9 @@ const Station = styled.li`
   &:hover {
     box-shadow: 0 2px 15px 0 rgba(0,0,0,.3);
   }
+  @media (max-width: 867px) {
+    width:unset;
+  }
 `;
 
 const TrainHead = styled.div`
@@ -23,12 +71,20 @@ const TrainHead = styled.div`
   width: 30%;
   align-items:center;
   justify-content: space-around;
+  @media (max-width: 867px) {
+    flex-direction:column;
+  align-items:unset;
+
+  }
 `;
 
 const TrainNumber = styled.h2`
   font-weight: bold;
   font-size: 1.5em;
   margin-bottom: 0.5em;
+  @media (max-width: 867px) {
+    font-size:1em;
+    }
 `;
 
 const TrainName = styled.p`
@@ -36,6 +92,10 @@ const TrainName = styled.p`
   margin-bottom: 0.5em;
   font-weight: bold;
   letter-spacing: 1.7px;
+  @media (max-width: 867px) {
+    font-size:0.8em;
+    width:400px
+    }
 `;
 
 const TrainClass = styled.p`
@@ -44,12 +104,18 @@ const TrainClass = styled.p`
   font-weight: bold;
   text-transform: uppercase;
   color: #333;
+  @media (max-width: 867px) {
+    font-size:0.7em;
+    }
 `;
 
 const TrainType = styled.p`
   font-size: 1.1em;
   margin-right: 0.7em;
   font-size: 0.9em;
+  @media (max-width: 867px) {
+    font-size:0.7em;
+    }
   
 `;
 const StationRow2 = styled.div`
@@ -63,6 +129,9 @@ const ArrivalTime = styled.p`
   margin-bottom: 0.5em;
   color: rgba(19, 33, 52, 0.7);
   letter-spacing: 0.8px;
+  @media (max-width: 867px) {
+    font-size:0.8em;
+    }
 `;
 
 const DepartureTime = styled.p`
@@ -70,6 +139,9 @@ const DepartureTime = styled.p`
   margin-bottom: 0.5em;
   color: rgba(19, 33, 52, 0.7);
   letter-spacing: 0.8px;
+  @media (max-width: 867px) {
+    font-size:0.8em;
+    }
 `;
 
 
@@ -87,6 +159,11 @@ const ScheduleList = styled.ul`
     font-weight: bold;
     color: #5d5a5a;
   }
+  @media (max-width: 867px) {
+    font-size: 0.7em;
+    align-items: flex-start;
+    height:40px
+    }
 `;
 
 const ScheduleDay = styled.li`
@@ -100,6 +177,9 @@ const ScheduleDay = styled.li`
   color: ${({ active }) => active ? '#1b2e4d' : 'gray'};
   font-weight: ${({ active }) => active ? 'bold' : 'normal'};
   margin-right: 0.5em;
+  @media (max-width: 867px) {
+   height:unset;
+  }
 `;
 const StationRow1 = styled.div`
   display:flex;
@@ -154,6 +234,10 @@ const StationRow3 = styled.div`
 display:flex;
 justify-content: center;
 `;
+const LinkContainer = styled.div`
+display: flex;
+justify-content: flex-end;
+`;
 const Link = styled.a`
 color: rgb(11, 36, 71);
 text-decoration: none;
@@ -163,6 +247,9 @@ margin-top: -22px;
 &:hover {
   cursor: pointer;
   color:  rgb(103, 103, 103);
+}
+@media (max-width: 867px) {
+  font-size: 0.8em;
 }
 `;
 
@@ -178,92 +265,97 @@ const dayMap = {
 const dayMapValues = Object.values(dayMap);
 const dayMapKeys = Object.keys(dayMap);
 
-function StationSchedule({ data }) {
-  const stationData = [
-    {
-      "trainNumber": "20655",
-      "trainName": "YPR-UBL SF EXPRESS",
-      "trainRoute": "Yasvantpur Jn (YPR) - Hubli Jn (UBL)",
-      "trainType": "Superfast",
-      "trainClass": "2S,2A,3A,SL",
-      "dayOfRun": "Fri",
-      "schedule": {
-        "arrival": "SRC",
-        "departure": "23:50"
-      }
-    },
-    {
-      "trainNumber": "06563",
-      "trainName": "YPR-MRDW EXP SPL",
-      "trainRoute": "Yasvantpur Jn (YPR) - Murdeshwar (MRDW)",
-      "trainType": "Train On Demand",
-      "trainClass": "GEN,2A,3A,SL",
-      "dayOfRun": "Sat",
-      "schedule": {
-        "arrival": "SRC",
-        "departure": "23:55"
-      }
-    },
-    {
-      "trainNumber": "16565",
-      "trainName": "YPR-MAQ EXPRESS",
-      "trainRoute": "Yasvantpur Jn (YPR) - Mangalore Central (MAQ)",
-      "trainType": "Mail/express",
-      "trainClass": "2S,SL,3A,2A,GEN",
-      "dayOfRun": "Daily",
-      "schedule": {
-        "arrival": "SRC",
-        "departure": "23:55"
-      }
-    }]
+function StationSchedule({ stationNameSuggestions, setStationSuggestions, setStationName }) {
+  const { city: cityName } = useParams();
+  const { error, loading, trains: trainData } = useSelector(state => state.trainData);
 
+  useEffect(() => {
+
+    axios.get(`${API_URL}/api/v1/city-stations?city=${cityName}`)
+      .then(response => {
+        setStationSuggestions(response.data.data)
+        // console.log(stationNameSuggestions);
+      })
+      .catch(error => {
+        console.log(error.response.data.message);
+      }
+      );
+  }, [cityName]);
   return (
-    <ul>
-      {stationData.map((station, index) => {
+    <>
+      {loading ? (
+        <div> <Loader />{console.log(loading)}</div >)
+        : error ? (
+          <div className="error">{error}</div>)
+          : (
+            <ul>
+              <div className='busSchedule-destAvailable'>
+                <h4>Stations Available</h4>
 
-        const days = station.dayOfRun.split(',')
-        const route = station.trainRoute.split(' - ')
+                <div className='destCities'>
+                  {stationNameSuggestions && stationNameSuggestions.length !== 0 && stationNameSuggestions.map((stn) => {
+                    return (
+                      <div key={stn} className='destCities-cardContainer' style={{ width: 'unset' }} onClick={() => {
+                        setStationName(stn);
+                      }}>
+                        <div className='cityLabel'>{stn}</div>
+                      </div>
+                    )
+                  })}
+                </div>
 
-        return (
-          <Station key={index}>
-            <StationRow1>
-              <TrainHead>
-                <TrainNumber>{station.trainNumber}</TrainNumber>
-                <TrainName>{station.trainName}</TrainName>
-              </TrainHead>
-              <ScheduleList>
-                <span>Runs on:</span>
-                {station.dayOfRun === 'Daily' ? (
-                  dayMapValues.map((day, index) => (
-                    <ScheduleDay key={index} active={true}>
-                      {day}
-                    </ScheduleDay>
-                  ))
-                ) : (
-                  dayMapKeys.map((day, index) => (
-                    <ScheduleDay key={index} active={days.includes(day)}>
-                      {dayMap[day]}
-                    </ScheduleDay>
-                  ))
-                )}
-              </ScheduleList>
-            </StationRow1>
+              </div>
+              {trainData && trainData.stationData && <h3 style={{ padding: '12px 26px', fontSize : '17px' }}>{trainData.stationName} </h3>}
+              {trainData && trainData.stationData && <div style={{ paddingLeft: '19px' }}>{trainData.stationData.length} results</div>}
+              {trainData && trainData.stationData && trainData.stationData.map((station, index) => {
 
-            <StationRow2>
-              <ArrivalTime>{route[0]}&nbsp;&nbsp;{station.schedule.arrival}</ArrivalTime>
-              <Arrow ><span></span></Arrow>
-              <DepartureTime>{station.schedule.departure}&nbsp;&nbsp;{route[1]}</DepartureTime>
-            </StationRow2>
-            {/* <Route>{route[0]}-----&gt;{route[1]}</Route> */}
-            <StationRow3>
-              <TrainType>{station.trainType}</TrainType>
-              <TrainClass>{station.trainClass}</TrainClass>
-            </StationRow3>
-            <Link>Route</Link>
-          </Station>
-        )
-      })}
-    </ul>
+                const days = station.dayOfRun.split(',')
+                const route = station.trainRoute.split(' - ')
+
+                return (
+
+                  <Station key={index}>
+                    <StationRow1>
+                      <TrainHead>
+                        <TrainNumber>{station.trainNumber}</TrainNumber>
+                        <TrainName>{station.trainName}</TrainName>
+                      </TrainHead>
+                      <ScheduleList>
+                        <span>Runs on:</span>
+                        {station.dayOfRun === 'Daily' ? (
+                          dayMapValues.map((day, index) => (
+                            <ScheduleDay key={index} active={true}>
+                              {day}
+                            </ScheduleDay>
+                          ))
+                        ) : (
+                          dayMapKeys.map((day, index) => (
+                            <ScheduleDay key={index} active={days.includes(day)}>
+                              {dayMap[day]}
+                            </ScheduleDay>
+                          ))
+                        )}
+                      </ScheduleList>
+                    </StationRow1>
+
+                    <StationRow2>
+                      <ArrivalTime>{route[0]}&nbsp;&nbsp;{station.schedule.arrival}</ArrivalTime>
+                      <Arrow ><span></span></Arrow>
+                      <DepartureTime>{station.schedule.departure}&nbsp;&nbsp;{route[1]}</DepartureTime>
+                    </StationRow2>
+                    {/* <Route>{route[0]}-----&gt;{route[1]}</Route> */}
+                    <StationRow3>
+                      <TrainType>{station.trainType}</TrainType>
+                      <TrainClass>{station.trainClass}</TrainClass>
+                    </StationRow3>
+                    <LinkContainer><Link>Route</Link></LinkContainer>
+                  </Station>
+                )
+              })}
+            </ul>
+          )
+      }
+    </>
   );
 }
 

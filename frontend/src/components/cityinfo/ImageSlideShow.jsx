@@ -7,23 +7,26 @@ const ImageSlideshow = ({ cityName }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (slideIndex === images.length - 2) {
-        setIsReversed(true);
-      } else if (slideIndex === 0) {
-        setIsReversed(false);
-      }
-
-      setSlideIndex((prevIndex) => {
-        if (isReversed) {
-          return prevIndex - 1;
-        } else {
-          return prevIndex + 1;
+    const timers = images.map((image, index) => {
+      return setTimeout(() => {
+        if (slideIndex === images.length - 2) {
+          setIsReversed(true);
+        } else if (slideIndex === 0) {
+          setIsReversed(false);
         }
-      });
-    }, 2000);
+  
+        setSlideIndex((prevIndex) => {
+          if (isReversed) {
+            return prevIndex - 1;
+          } else {
+            return prevIndex + 1;
+          }
+        });
+      }, (index + 1) * 3000); // multiply index by 2000 to stagger the timeouts
+    });
+  
+    return () => timers.forEach((timer) => clearTimeout(timer));
 
-    return () => clearTimeout(timer);
   }, [slideIndex, images, isReversed]);
 
 

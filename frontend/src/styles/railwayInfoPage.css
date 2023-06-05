@@ -68,8 +68,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    width: 100%;
   }
-  
   .partb button {
     padding: 10px;
     background-color: #1b3253;
@@ -90,6 +90,31 @@
     right: 686px;
     width: 139px;
   }
-  .partb-tbws input[type="text"]{
+  .partb-tbws input[type="text"],
+  .partb-tbws input[type="date"]{
     height: 35px;
   }
+  @media (max-width: 867px) {
+      .railwayInfo-container
+      {
+        width: unset;
+        margin: 22px auto;
+        overflow: hidden;
+      }
+      .railwayInfo-header {
+        padding-left: 23px; 
+         margin-bottom: 112px;
+      }
+      .railwayInfo-header svg{
+        width: 79px;
+      }
+      .parta {
+        margin: 7px 15px;
+        position: absolute;
+        top: 209px;
+      }
+      .partb {
+        padding: 11px;
+        margin-right: 17px;
+      }
+   }

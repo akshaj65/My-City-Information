@@ -1,0 +1,5 @@
+export const TRAIN_REQUEST = 'TRAIN_REQUEST';
+export const TRAIN_SUCCESS = 'TRAIN_SUCCESS';
+export const TRAIN_FAIL = 'TRAIN_FAIL';
+
+export const  CLEAR_ERRORS="CLEAR_ERRORS"

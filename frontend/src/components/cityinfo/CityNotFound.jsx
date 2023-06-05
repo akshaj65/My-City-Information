@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CityNotFoundImg from '../../Images/city-not-found.jpg';
+import MetaData from '../../pages/MetaData';
 
 const CityNotFoundContainer = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const CityNotFoundText = styled.p`
 function CityNotFound() {
   return (
     <CityNotFoundContainer>
+      <MetaData title="CityScape | 404 City Not Found"/>   
       <CityNotFoundImage src={CityNotFoundImg} alt="City not found" />
       <CityNotFoundText>Sorry, the city you are looking for could not be found.</CityNotFoundText>
     </CityNotFoundContainer>

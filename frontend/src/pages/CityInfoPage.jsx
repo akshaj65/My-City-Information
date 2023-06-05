@@ -14,6 +14,7 @@ import { getCity } from '../redux/actions/cityAction';
 import CityNotFound from '../components/cityinfo/CityNotFound';
 import Loader from '../components/Loader';
 import SOSPhoneNumbers from '../components/SOSPhoneNumbers';
+import MetaData from './MetaData';
 
 function CityInfoPage() {
   const cityName = useLocation().pathname.split('/').pop();
@@ -34,6 +35,7 @@ function CityInfoPage() {
 
   return (
     <div>
+      <MetaData title={`CityScape  |  ${cityName}`} />
       <NavBar />
       <SOSPhoneNumbers />
       {loading ? (
@@ -62,8 +64,8 @@ function CityInfoPage() {
                 <CityDesc city={city.data} />
                 <div className="cityTransport">
                   <h4>Transport</h4>
-                  <div style={{ 'margin': '11px 46px' }}>
-                    <Link to={`/city/${cityName}/bus`} style={{ 'paddingRight': '18px' }}>Bus</Link>
+                  <div>
+                    <Link to={`/city/${cityName}/bus`}>Bus</Link>
                     <Link to={`/city/${cityName}/train`}>Train</Link>
                   </div>
                 </div>
@@ -81,7 +83,7 @@ function CityInfoPage() {
             <div className="cityInfo-bottom-section">
 
               <div className="cityInfo-list-box">
-                {console.log(placeType,'placeType')}
+                {console.log(placeType, 'placeType')}
                 <PlaceList placeType={placeType} cityName={cityName} setMapData={setMapData} activeCard={activeCard} setActiveCard={setActiveCard} />
               </div>
               <div className="cityInfo-map-box">

@@ -7,8 +7,7 @@ import '../styles/profile.css'; // Import the CSS file
 const Profile = ({ isMobileView }) => {
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
-
-    const handleProfileClick = () => {
+        const handleProfileClick = () => {
         setIsOpen(!isOpen);
     };
 
@@ -20,7 +19,7 @@ const Profile = ({ isMobileView }) => {
 
         <Fragment>
             {isMobileView ?
-                <p className={`profile-link ${isOpen ? 'active' : ''}`} style={{'margin':"7px 0px"}} onClick={handleProfileClick}>Account</p> :
+                <p className={`profile-link ${isOpen ? 'active' : ''}`} style={{'margin':"7px 0px",cursor: 'default'}} onClick={handleProfileClick}>Account</p> :
                 <img
                     src={logo}
                     alt="User Logo"
@@ -38,7 +37,8 @@ const Profile = ({ isMobileView }) => {
             {(isOpen)&& (
                 <div className={`profile-container profile-fade-in ${isOpen ? '' : 'visible'}`}>
                     <p className="profile-name">
-                        <a href="/account">Profile</a>
+                        {/* <a href="/account">Profile</a> */}
+                        <a href="/under-construction">Profile</a>   {/* under construction */}
                     </p>
                     <button className='profile-button' onClick={handleSignOut} >
                         Sign out

@@ -8,6 +8,7 @@ import placeTypeReducer from "./reducers/placeTypeReducer";
 import { allPlaceReducer } from "./reducers/allPlacesReducer";
 import { cityReducer } from "./reducers/cityReducer";
 import { busReducer } from "./reducers/busReducer";
+import { trainReducer } from "./reducers/trainReducer";
 
 const reducer=combineReducers({
     user:userReducer,
@@ -16,6 +17,7 @@ const reducer=combineReducers({
     places:allPlaceReducer,
     cityData:cityReducer,
     busData:busReducer,
+    trainData:trainReducer,
 });
 
 let initialState={};

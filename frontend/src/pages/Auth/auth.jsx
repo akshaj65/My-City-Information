@@ -8,6 +8,7 @@ import Loader from '../../components/Loader'
 // import Swal from 'sweetalert2'
 import { clearErrors } from '../../redux/actions/userAction'
 import { useNavigate } from 'react-router-dom'
+import MetaData from '../MetaData'
 const Auth = () => {
 
     const dispatch = useDispatch();
@@ -23,7 +24,9 @@ const Auth = () => {
     const handleLoginClick = () => {
         setIsSignUp(false);
     };
-
+    const handleButtonClick = () => {
+        setIsSignUp(prevIsSignUp => !prevIsSignUp);
+      };
     useEffect(() => {
         if (isAuthenticated) {
             navigate('/city');
@@ -32,11 +35,18 @@ const Auth = () => {
 
             dispatch(clearErrors());
         }
-    }, [dispatch, error,isAuthenticated,navigate])
+    }, [dispatch, error, isAuthenticated, navigate])
 
+    useEffect(() => {
+        const newTitle = isSignUp ? 'CityScape | Join the Community' : 'CityScape | Login';
+        document.title = newTitle;
+        console.log(newTitle);
+      }, [isSignUp]);
+    
 
     return (
         <Fragment>
+             <MetaData title={document.title} />
             {loading ? (
                 <Loader />
             ) : (

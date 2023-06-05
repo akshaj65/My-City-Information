@@ -5,6 +5,7 @@ import {
     ALL_ATTRACTION_SUCCESS,
     CLEAR_ERRORS
 } from '../constants/attractionConstants';
+import { API_URL } from '../../config/env';
 
 
 // laod attractions
@@ -12,7 +13,7 @@ import {
 export const getAttraction = (city) => async (dispatch) => {
     try {
         dispatch({ type: ALL_ATTRACTION_REQUEST });
-        const {data}= await axios.get(`/api/v1/city/${city}/attractions`)
+        const {data}= await axios.get(`${API_URL}/api/v1/city/${city}/attractions`)
         dispatch({
             type:ALL_ATTRACTION_SUCCESS,
             payload:data.results,

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import { BiBus } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import Autocomplete from '../components/AutoComplete';
 import BusCard from '../components/BusCard';
 import Loader from '../components/Loader';
@@ -11,35 +11,8 @@ import NavBar from '../components/NavBar';
 import { getBuses } from '../redux/actions/busAction';
 import '../styles/busSchedulePage.css';
 import MetaData from './MetaData';
+import { API_URL } from '../config/env';
 
-
-const DestAvailableCard = ({ toCity,fromCity }) => {
-  const CardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  background-color: rgb(209, 209, 209);
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
-  margin: 18px 20px;
-  text-transform: capitalize;
-
-  &:hover{
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px;
-  }
-`;
-
-  const CityLabel = styled.div`
-  font-size: 16px;
-  font-weight: bold;
-`;
-  return (
-    <CardContainer>
-      <CityLabel>{toCity}</CityLabel>
-    </CardContainer>
-  );
-};
 
 
 
@@ -53,7 +26,7 @@ const BusSchedulePage = () => {
   const [toValue, setToValue] = useState('');
 
 
-  const [fromOptions, setFromOptions] = useState([
+  const [fromOptions] = useState([
     "bengaluru",
     "chennai",
     "karwar",
@@ -66,7 +39,7 @@ const BusSchedulePage = () => {
     "karwar",
     "hyderabad",
     "panaji",
-  ].filter((city) => city !== cityName));
+  ].filter((city) => city !== fromValue));
   const handleFromChange = (selectedCity) => {
     const updatedOptions = fromOptions.filter((city) => city !== selectedCity);
     setToOptions(updatedOptions);
@@ -77,10 +50,14 @@ const BusSchedulePage = () => {
       dispatch(getBuses(fromValue, toValue));
     }
   }
-  
+
+
+  let shouldRunEffect_fromOptions = fromOptions.indexOf(fromValue) !== -1
+
   useEffect(() => {
-    if (cityName || fromValue) {
-      axios.get(`/api/v1/bus-destinations?srcStn=${fromValue || cityName}`)
+    if (shouldRunEffect_fromOptions) {
+      setToValue('');
+      axios.get(`${API_URL}/api/v1/bus-destinations?srcStn=${fromValue || cityName}`)
         .then(response => {
           setToOptions(response.data.data)
         })
@@ -89,9 +66,14 @@ const BusSchedulePage = () => {
         }
         );
     }
+  }, [cityName, fromOptions, fromValue, shouldRunEffect_fromOptions]);
 
-  }, [cityName, fromValue]);
 
+
+  // useEffect(() => {
+  //   setToValue(toValue);
+  //   setFromValue(fromValue)
+  // }, [toValue, fromValue]);
   return (
     <div>
       <MetaData title="Bus Schedules" />
@@ -100,10 +82,10 @@ const BusSchedulePage = () => {
         <div className='busSchedule-header'>
           <BiBus className='busIcon' />
           <div className='fromToLayout'>
-            <Autocomplete defultValue={cityName} onEnter={setFromValue} suggestions={fromOptions}
+            <Autocomplete defaultValue={fromValue} onEnter={setFromValue} suggestions={fromOptions}
               onChange={handleFromChange} placeholder="From" />
             <span>&rarr;</span>
-            <Autocomplete onEnter={setToValue} suggestions={toOptions} placeholder="To" />
+            <Autocomplete defaultValue={toValue} onEnter={setToValue} suggestions={toOptions} placeholder="To" />
 
           </div>
           <div className="busSchedule-search">
@@ -116,9 +98,14 @@ const BusSchedulePage = () => {
 
           <div className='destCities'>
             {toOptions.map((dest) => {
-              return <DestAvailableCard key={dest} fromCity={cityName} toCity={dest}
-                 />
-
+              return (
+                <div key={dest} className='destCities-cardContainer' onClick={() => {
+                  setFromValue(fromValue);
+                  setToValue(dest);
+                }}>
+                  <div className='cityLabel'>{dest}</div>
+                </div>
+              )
             })}
           </div>
 
@@ -131,8 +118,12 @@ const BusSchedulePage = () => {
           <div className="error">{error}</div>
         ) : (
           <>
-            {busData && busData.srcStn && <div className="buses">Depart from {busData.srcStn}&nbsp;&nbsp;-&gt;&nbsp;&nbsp;Arrival at {busData.destStn}</div>}
-            {busData && busData.results && <div>{busData.results.length} results</div>}
+            {busData && busData.srcStn && <Fragment><div className="buses">
+              {busData.srcStn}&nbsp;&nbsp;<span className='line'></span><span className='arrow'>&gt;</span>&nbsp;&nbsp; {busData.destStn}
+            </div>
+              <div><span>Dep</span><span>Arr</span></div>
+            </Fragment>}
+            {busData && busData.results && <div style={{ 'padding-left': '19px' }}>{busData.results.length} results</div>}
             <div className="column">
               <div className="busCards">
                 {busData && busData.results && busData.results.map((bus, index) => (

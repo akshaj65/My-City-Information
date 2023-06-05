@@ -11,6 +11,7 @@ import Home from './pages/HomePage';
 import NoPage from './pages/NoPage';
 import RailwayInfoPage from './pages/RailwayInfoPage';
 import store from './redux/store';
+import PageUnderConstruction from './pages/PageUnderConstruction';
 const routes = [
   { path: '/', component: <Home/> },
   { path: '/login', component: <Auth/> },
@@ -20,6 +21,7 @@ const routes = [
   { path: '/city/:city', component: <CityInfoPage/> },
   { path: '/city/:city/bus', component: <BusSchedulePage/> },
   { path: '/city/:city/train', component: <RailwayInfoPage/> },
+  { path: '/under-construction', component: <PageUnderConstruction/> },
   { path: '*', component: <NoPage/> }
 ];
 

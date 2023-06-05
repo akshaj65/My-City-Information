@@ -26,6 +26,10 @@ li {
     justify-content:start;
     align-items: center;
 }
+.logo img{
+  width: 100px;
+  filter: saturate(68%);
+}
 .menu-link {
     grid-column: 3/4;
 }
@@ -121,8 +125,10 @@ li {
       /* grid-template-columns: 2rem 2fr 3fr 2rem 2rem; */
       grid-template-columns: 0.7rem 7fr 3fr 2rem 1rem;
     }
-    .logo h2{
-        font-size: larger;
+    .logo img{
+      width: 70px;
+      height: 40px;
+      margin-bottom: 12px;
     }
     .menu-link {
       display: none;

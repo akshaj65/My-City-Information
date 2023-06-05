@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HiOutlineCurrencyRupee } from 'react-icons/hi';
+import { BiRupee } from 'react-icons/bi';
 const Card = styled.div`
   display: flex;
   flex-direction: row;
@@ -16,38 +16,58 @@ const Card = styled.div`
   &:hover{
     box-shadow: 0 2px 15px 0 rgba(0,0,0,.3);
   }
+  @media (max-width: 867px) {
+    width: unset;
+    padding: 1.2em;
+    flex-wrap: wrap;  
+   }
 `;
 
 const Operator = styled.div`
-flex: 3;
+  flex: 3;
   display: flex;
   flex-direction: column;
+  @media (max-width: 867px) {
+    flex: 1 0 100%;
+  // flex-direction: row;
+   }
 `;
 
 const OperatorName = styled.div`
   font-weight: bold;
   margin-bottom: 0.5em;
+  color: rgb(25, 34, 106);
+  @media (max-width: 867px) {
+    flex-grow: 1;
+    padding-right: 5px;
+   }
 `;
 
 const SeatList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  @media (max-width: 867px) {
+    padding: 0px 0px 10px;
+    font-size: 13px;
+   }
+ 
 `;
 
 const Time = styled.div`
   flex: 1;
   font-size: 1.1em;
   font-weight: bold;
+  @media (max-width: 867px) {
+    font-size: 0.8em;
+   }
 `;
 const Line = styled.span`
     display: block;
     width: 35px;
-    // padding-bottom: .55em;
     border-bottom: 2px solid #cacaca;
 `;
 const Arrow = styled.span`
-    // padding-top: 8px;
     font-size: 1.3em;
     color: #cacaca;
 `;
@@ -64,6 +84,9 @@ const Duration = styled.div`
   align-items: center;
   font-weight: bold;
   padding: 0px 7px;
+  @media (max-width: 867px) {
+    font-size: 14px;
+   }
 `;
 
 const ArrivalTime = styled.div`
@@ -71,23 +94,43 @@ flex: 1;
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
+  @media (max-width: 867px) {
+    font-size: 0.8em;
+   }
+
 `;
 
 const Price = styled.div`
-  // flex: 1;
-  // font-size: 1.1em;
   font-weight: bold;
   text-align: left;
-  padding-left: 47px;
-  color: #0B2447;
-//   width: 13px;
-// font-size: 18px;
+  // padding: 3px;
+  padding: 3px 7px;
+  margin-left: 47px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(63, 68, 112);
+  border-radius: 7px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 2px;
+  // color: #0B2447;
+  // background-color: #dedede;
+  // box-shadow: 0px 0px 2px #0b2447;
+  @media (max-width: 867px) {
+    // flex-grow: 1;
+    margin-left: 21px;
+   
+  }
 `;
 
 
 const Rupee =styled.span`
   width: 13px;
   display: inline-block;
+  @media (max-width: 867px) {
+    display:unset;
+   }
+   svg{
+    scale: 1.2;
+    margin: -2px;
+   }
 `
 const BusCard = ({ data }) => {
   function convertTo24Hour(time) {
@@ -123,7 +166,7 @@ const BusCard = ({ data }) => {
 
 
   return (
-    <Card>
+    <Card key={data._id}>
       <Operator>
         <OperatorName>{data.operatorName}</OperatorName>
         <SeatList>
@@ -142,7 +185,7 @@ const BusCard = ({ data }) => {
       </DurationBox>
 
       <ArrivalTime>{data.arrivalTime}</ArrivalTime>
-      <Price> <Rupee><HiOutlineCurrencyRupee/></Rupee> {data.fare}</Price>
+      <Price> <Rupee><BiRupee/></Rupee> {data.fare}</Price>
     </Card>
   );
 };

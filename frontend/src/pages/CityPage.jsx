@@ -6,6 +6,7 @@ import { cities_cards, hillStation_cards, beach_cards } from "../components/card
 import "../styles/cityPage.css";
 import NavBar from "../components/NavBar.jsx";
 import SOSPhoneNumbers from "../components/SOSPhoneNumbers";
+import MetaData from "./MetaData";
 
 
 
@@ -37,6 +38,7 @@ const TestHome = () => {
 
   return (
     <>
+     <MetaData title="Discover Cities | Explore Urban Treasures" />
       <NavBar />
       <SOSPhoneNumbers/>
       <div className="flexContainer">
@@ -48,7 +50,7 @@ const TestHome = () => {
         <Search />
         <MultiCarousel text={"MetroPolitian Cities"} cards={getCityCards()} />
         <MultiCarousel text={"Hill Stations"} cards={getHillStationCards()} />
-        <MultiCarousel text={"Beaches"} cards={getBeachCards()} />
+        <MultiCarousel text={"Beach Cities"} cards={getBeachCards()} />
       </div>
     </>
   );

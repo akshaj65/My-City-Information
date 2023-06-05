@@ -1,10 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/autocomplete.css";
-
-const Autocomplete = ({ defultValue, onEnter,suggestions, placeholder, onChange }) => {
+// function useDebounce(value, delay) {
+//     const [debouncedValue, setDebouncedValue] = useState(value);
+  
+//     useEffect(() => {
+//       const timer = setTimeout(() => {
+//         setDebouncedValue(value);
+//       }, delay);
+  
+//       return () => {
+//         clearTimeout(timer);
+//       };
+//     }, [value, delay]);
+  
+//     return debouncedValue;
+//   }
+const Autocomplete = ({ defaultValue, onEnter,suggestions, placeholder, onChange }) => {
+   
     const inputRef = useRef(null);
     const [showDropdown, setShowDropdown] = useState(false);
-    const [userInput, setUserInput] = useState(defultValue || "");
+    const [userInput, setUserInput] = useState(defaultValue || "");
     const [filteredSuggestions, setFilteredSuggestions] = useState(suggestions || []);
 
     const handleInputChange = (event) => {
@@ -12,16 +27,17 @@ const Autocomplete = ({ defultValue, onEnter,suggestions, placeholder, onChange 
         const input = event.target.value.toLowerCase();
         const filtered = suggestions.filter((suggestion) =>
             //   suggestion.toLowerCase().startsWith(input.toLowerCase())
-            suggestion.startsWith(input)
+            suggestion.toLowerCase().startsWith(input)
         );
+        console.log(filtered);
         setUserInput(input);
         setFilteredSuggestions(filtered);
         if(onEnter){
             onEnter(input);
         }
-        if (onChange && filtered.includes(input)) {
+        if (onChange && filtered.indexOf(input)!==-1) {
             onChange(input);
-            // console.log(input);
+            console.log(input,'handleInputChange');
         }
 
        
@@ -66,7 +82,12 @@ const Autocomplete = ({ defultValue, onEnter,suggestions, placeholder, onChange 
         };
     }, []);
 
-
+    useEffect(() => {
+        if( suggestions.indexOf(defaultValue)!==-1 || defaultValue ===''){
+        setUserInput(defaultValue);
+    }
+    }, [defaultValue,suggestions])
+    
     return (
         <div className="autocomplete-wrapper">
 

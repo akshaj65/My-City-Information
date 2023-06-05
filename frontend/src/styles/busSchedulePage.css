@@ -74,22 +74,76 @@
   margin-left: 25px;
   margin-bottom: 30px;
 }
+
+
+.busSchedule-destAvailable .destCities-cardContainer {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+  padding: 16px;
+  background-color: rgb(209, 209, 209);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+  margin: 18px 20px;
+  text-transform: capitalize;
+  cursor: default;
+}
+
+.busSchedule-destAvailable .destCities-cardContainer:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px;
+}
+
+.busSchedule-destAvailable .cityLabel {
+  font-size: 16px;
+  font-weight: bold;
+}
+
   .buses {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
-    /* text-align: center; */
+    margin-bottom: -1px;
     text-transform: capitalize;
     letter-spacing: 3px;
     color: #687987;
+    display: flex;
+    text-align: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
   }
-  
+  .buses + div {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    letter-spacing: 3px;
+    color: #0b1941;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .buses + div > span{
+    border-radius: 6px;
+    padding: 2px 10px;
+    border: 2px solid;
+    box-shadow: 0px 0px 3px #2d2d2d8a;
+  }
   .column {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
   
+  .buses .line{
+    display: block;
+    width: 45px;
+    border-bottom: 2px solid #000;
+  }
+  .buses .arrow{
+    font-size: 1.5em;
+    color: #000;
+  }
   .busCard {
     background-color: #f5f5f5;
     border-radius: 5px;
@@ -116,3 +170,47 @@
     font-size: 16px;
   }
   
+
+  @media (max-width: 867px) { 
+    .busSchedule-container{
+      width: unset;
+    }
+    .busSchedule-header {
+      padding: 15px;
+      padding-left: unset;
+      margin-bottom: 18px;
+    }
+    .fromToLayout{
+      flex: unset;
+      justify-content:unset;
+      flex-direction: column;
+    }
+    .fromToLayout >span{
+      display: none;
+    }
+    .busSchedule-header .autocomplete-wrapper{
+      padding: 6px;
+    }
+    .busSchedule-search{
+      flex: unset;
+    }
+    .busSchedule-header .busSchedule-search button{
+      margin: unset;
+    }
+    .busSchedule-destAvailable .destCities{
+     flex-wrap: wrap;
+    }
+    .busSchedule-destAvailable .destCities-cardContainer {
+      text-align: center  ;
+      width: 111px;
+    }
+    .destCities-cardContainer .cityLabel{
+      font-size: 13px;
+    }
+    .busSchedule-destAvailable{
+      padding: 13px;
+    }
+    .busSchedule-destAvailable h4{
+      margin: 0 14px;
+    }
+  }
